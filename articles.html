@@ -260,9 +260,15 @@
   }
   .btn-outline:hover { border-color: var(--emerald); color: var(--emerald); box-shadow: 0 0 0 4px rgba(16,185,129,0.12); transform: translateY(-2px); }
 
-  /* ================= ARTICLES GRID ================= */
-  .articles-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  /* ================= ARTICLES — GRILLE CATALOGUE ================= */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
   .article-card {
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(180deg, var(--surface), var(--surface-2));
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -272,27 +278,57 @@
     transform: translateY(24px);
   }
   .article-card.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .article-card:hover { transform: translateY(-6px); border-color: var(--emerald); box-shadow: 0 20px 44px -18px rgba(16, 185, 129, 0.4); }
+  .article-card:hover { transform: translateY(-8px); border-color: var(--emerald); box-shadow: 0 20px 44px -18px rgba(16, 185, 129, 0.45); }
+  .article-card.is-locked:hover { border-color: var(--border); box-shadow: none; transform: none; }
 
-  .article-media { position: relative; aspect-ratio: 16 / 8; overflow: hidden; }
+  .article-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
   .article-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-  .article-card:hover .article-media img { transform: scale(1.05); }
+  .article-card:hover .article-media img { transform: scale(1.06); }
+  .article-media.is-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 34px;
+    background: linear-gradient(135deg, var(--surface-2), var(--bg-alt));
+  }
   .article-tag {
     position: absolute;
-    top: 16px; left: 16px;
-    background: rgba(16, 185, 129, 0.9);
+    top: 14px; left: 14px;
+    background: rgba(16, 185, 129, 0.92);
     color: #06210F;
-    font-size: 12.5px;
+    font-size: 12px;
     font-weight: 700;
     padding: 5px 12px;
     border-radius: 999px;
   }
+  .article-tag.tag-soon { background: rgba(148, 163, 184, 0.25); color: var(--text); }
 
-  .article-body { padding: 34px; }
-  .article-meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+  .article-body { padding: 26px; display: flex; flex-direction: column; flex-grow: 1; }
+  .article-meta { display: flex; align-items: center; gap: 12px; font-size: 12.5px; color: var(--text-muted); margin-bottom: 12px; }
   .article-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-muted); }
-  .article-body h3 { font-size: clamp(20px, 2.6vw, 26px); margin-bottom: 22px; }
+  .article-body h3 { font-size: 18.5px; margin-bottom: 10px; }
+  .article-excerpt { font-size: 14px; margin-bottom: 22px; flex-grow: 1; }
 
+  .btn-read {
+    color: var(--emerald);
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 14.5px;
+  }
+  .btn-read:hover { background: rgba(16, 185, 129, 0.18); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12); transform: translateY(-2px); }
+
+  .btn-locked {
+    color: var(--text-muted);
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid var(--border);
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 14.5px;
+    cursor: not-allowed;
+  }
+  .btn-locked:hover { transform: none; box-shadow: none; }
+
+  /* ---- Contenu de lecture (dans la modale) ---- */
   .article-step {
     display: flex;
     gap: 16px;
@@ -327,7 +363,7 @@
   .legal-box p { font-size: 13.5px; color: var(--text); }
   .legal-box strong { color: var(--gold); }
 
-  .article-footer {
+  .reader-footer {
     margin-top: 28px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
@@ -337,7 +373,57 @@
     flex-wrap: wrap;
     gap: 14px;
   }
-  .article-footer p { font-size: 14px; }
+  .reader-footer p { font-size: 14px; }
+
+  /* ================= MODALE DE LECTURE ================= */
+  .reader-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 14, 0.78);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .reader-overlay.is-open { opacity: 1; visibility: visible; }
+  .reader-box {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    max-height: 86vh;
+    overflow-y: auto;
+    background: linear-gradient(180deg, var(--surface), var(--surface-2));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    transform: translateY(24px) scale(0.97);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease;
+  }
+  .reader-overlay.is-open .reader-box { transform: translateY(0) scale(1); opacity: 1; }
+  .reader-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .reader-close:hover { background: rgba(16, 185, 129, 0.15); border-color: var(--emerald); transform: rotate(90deg); }
+  .reader-meta { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+  .reader-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-muted); }
+  .reader-box h3 { font-size: clamp(20px, 2.6vw, 25px); margin-bottom: 20px; padding-right: 30px; }
 
   /* ================= SUPPORT ================= */
   .support-grid {
@@ -394,13 +480,20 @@
   }
 
   /* ================= RESPONSIVE ================= */
+  @media (max-width: 900px) {
+    .articles-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 800px) {
     .support-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
   }
+  @media (max-width: 640px) {
+    .articles-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 560px) {
     .premium-card { padding: 30px 22px; }
-    .article-body { padding: 26px 22px; }
+    .article-body { padding: 22px 20px; }
+    .reader-box { padding: 30px 22px; }
     .price-badge { margin-left: 0; }
     .footer-top { flex-direction: column; }
   }
@@ -478,6 +571,8 @@
       </div>
 
       <div class="articles-grid">
+
+        <!-- Article 1 — disponible -->
         <article class="article-card">
           <div class="article-media">
             <span class="article-tag">Gratuit</span>
@@ -485,54 +580,59 @@
           </div>
           <div class="article-body">
             <div class="article-meta">
-              <span>📖 4 minutes de lecture</span>
+              <span>📖 4 min</span>
               <span class="dot"></span>
               <span>Débutant</span>
             </div>
             <h3>Comment Créer son Business en Ligne quand on Débute ?</h3>
-            <p style="margin-bottom: 26px;">
-              Se lancer en ligne peut sembler intimidant : trop d'options, trop d'avis contradictoires, pas assez de temps.
-              Bonne nouvelle : vous n'avez pas besoin de tout savoir pour démarrer, juste de suivre les trois étapes ci-dessous, dans l'ordre.
-            </p>
-
-            <div class="article-step">
-              <span class="step-num">1</span>
-              <div>
-                <h4>Trouver la bonne niche</h4>
-                <p>Ne cherchez pas une idée « parfaite » : cherchez un sujet à la croisée de trois choses — ce que vous connaissez déjà, ce qui intéresse réellement des gens prêts à payer, et ce que vous pouvez tenir sur la durée sans vous épuiser. Une niche trop large vous noie dans la concurrence ; une niche trop précise vous prive de clients. Visez un problème concret que vous pouvez résumer en une phrase.</p>
-              </div>
-            </div>
-
-            <div class="article-step">
-              <span class="step-num">2</span>
-              <div>
-                <h4>Valider votre idée avant de dépenser</h4>
-                <p>Avant d'investir du temps ou de l'argent, testez la demande. Publiez un simple sondage, échangez avec dix personnes concernées, ou proposez une préinscription gratuite. Si personne ne réagit à une offre gratuite, personne ne paiera pour la version complète. Validez d'abord l'intérêt, construisez ensuite — jamais l'inverse.</p>
-              </div>
-            </div>
-
-            <div class="article-step">
-              <span class="step-num">3</span>
-              <div>
-                <h4>Utiliser les bons outils simplifiés</h4>
-                <p>Pas besoin d'un site sophistiqué ni d'un budget marketing conséquent pour commencer. Un créateur de site gratuit, une adresse e-mail professionnelle et un seul réseau social suffisent pour lancer une première version. Ajoutez de la complexité seulement quand vos premiers résultats la justifient.</p>
-              </div>
-            </div>
-
-            <div class="legal-box">
-              <span class="icon">⚖️</span>
-              <p><strong>Bon à savoir :</strong> en France, il est possible de créer une micro-entreprise dès 16 ans (mineur émancipé) et, sous conditions, dès 15 ans pour un mineur non émancipé avec l'autorisation de ses représentants légaux. Renseignez-vous auprès des organismes officiels avant de démarrer une activité commerciale.</p>
-            </div>
-
-            <div class="article-footer">
-              <p>Envie d'aller plus loin et de passer à l'action dès aujourd'hui ?</p>
-              <a class="btn btn-outline" href="#premium">Voir le Guide Premium</a>
-            </div>
+            <p class="article-excerpt">Pas besoin de tout savoir pour démarrer. Découvrez les 3 étapes essentielles pour lancer votre activité en ligne sans vous disperser.</p>
+            <button class="btn btn-read" type="button" data-article="business-debutant">Lire l'article complet →</button>
           </div>
         </article>
+
+        <!-- Article 2 — à venir -->
+        <article class="article-card is-locked">
+          <div class="article-media is-placeholder">🧰</div>
+          <div class="article-body">
+            <div class="article-meta">
+              <span>📖 5 min</span>
+              <span class="dot"></span>
+              <span>Intermédiaire</span>
+            </div>
+            <h3>Les 5 Meilleurs Outils Gratuits pour Automatiser son Business</h3>
+            <p class="article-excerpt">Gagnez du temps dès le lancement grâce à une sélection d'outils gratuits pour automatiser vos tâches répétitives.</p>
+            <button class="btn btn-locked" type="button" disabled>🔒 Bientôt disponible</button>
+          </div>
+        </article>
+
+        <!-- Article 3 — à venir -->
+        <article class="article-card is-locked">
+          <div class="article-media is-placeholder">🎯</div>
+          <div class="article-body">
+            <div class="article-meta">
+              <span>📖 6 min</span>
+              <span class="dot"></span>
+              <span>Débutant</span>
+            </div>
+            <h3>Comment Trouver sa Niche en 2026</h3>
+            <p class="article-excerpt">La méthode simple pour identifier un sujet rentable, aligné avec vos compétences et une vraie demande du marché.</p>
+            <button class="btn btn-locked" type="button" disabled>🔒 Bientôt disponible</button>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
+
+  <!-- ================= MODALE DE LECTURE D'ARTICLE ================= -->
+  <div class="reader-overlay" id="readerOverlay">
+    <div class="reader-box" role="dialog" aria-modal="true" aria-label="Lecture de l'article">
+      <button class="reader-close" id="readerClose" type="button" aria-label="Fermer l'article">&times;</button>
+      <div id="readerContent">
+        <!-- Le contenu est injecté dynamiquement par le script -->
+      </div>
+    </div>
+  </div>
 
   <!-- ================= SUPPORT & COMMUNAUTÉ ================= -->
   <section class="section" id="support">
@@ -621,6 +721,86 @@
     } else {
       articleCards.forEach(function (card) { card.classList.add('in-view'); });
     }
+
+    // ---- Bibliothèque de contenu des articles (modale de lecture) ----
+    var articlesLibrary = {
+      'business-debutant': {
+        meta: '📖 4 min de lecture · Débutant',
+        title: 'Comment Créer son Business en Ligne quand on Débute ?',
+        html:
+          '<p style="margin-bottom:22px;">Se lancer en ligne peut sembler intimidant : trop d’options, trop d’avis contradictoires, pas assez de temps. ' +
+          'Bonne nouvelle : vous n’avez pas besoin de tout savoir pour démarrer, juste de suivre les trois étapes ci-dessous, dans l’ordre.</p>' +
+
+          '<div class="article-step"><span class="step-num">1</span><div>' +
+          '<h4>Trouver la bonne niche</h4>' +
+          '<p>Ne cherchez pas une idée « parfaite » : cherchez un sujet à la croisée de trois choses — ce que vous connaissez déjà, ce qui intéresse réellement des gens prêts à payer, et ce que vous pouvez tenir sur la durée sans vous épuiser. Une niche trop large vous noie dans la concurrence ; une niche trop précise vous prive de clients. Visez un problème concret que vous pouvez résumer en une phrase.</p>' +
+          '</div></div>' +
+
+          '<div class="article-step"><span class="step-num">2</span><div>' +
+          '<h4>Valider votre idée avant de dépenser</h4>' +
+          '<p>Avant d’investir du temps ou de l’argent, testez la demande. Publiez un simple sondage, échangez avec dix personnes concernées, ou proposez une préinscription gratuite. Si personne ne réagit à une offre gratuite, personne ne paiera pour la version complète. Validez d’abord l’intérêt, construisez ensuite — jamais l’inverse.</p>' +
+          '</div></div>' +
+
+          '<div class="article-step"><span class="step-num">3</span><div>' +
+          '<h4>Utiliser les bons outils simplifiés</h4>' +
+          '<p>Pas besoin d’un site sophistiqué ni d’un budget marketing conséquent pour commencer. Un créateur de site gratuit, une adresse e-mail professionnelle et un seul réseau social suffisent pour lancer une première version. Ajoutez de la complexité seulement quand vos premiers résultats la justifient.</p>' +
+          '</div></div>' +
+
+          '<div class="legal-box"><span class="icon">⚖️</span>' +
+          '<p><strong>Bon à savoir :</strong> en France, il est possible de créer une micro-entreprise dès 16 ans (mineur émancipé) et, sous conditions, dès 15 ans pour un mineur non émancipé avec l’autorisation de ses représentants légaux. Renseignez-vous auprès des organismes officiels avant de démarrer une activité commerciale.</p>' +
+          '</div>' +
+
+          '<div class="reader-footer">' +
+          '<p>Envie d’aller plus loin et de passer à l’action dès aujourd’hui ?</p>' +
+          '<a class="btn btn-outline" href="#premium" id="readerPremiumLink">Voir le Guide Premium</a>' +
+          '</div>'
+      }
+    };
+
+    // ---- Ouverture / fermeture de la modale de lecture ----
+    var readerOverlay = document.getElementById('readerOverlay');
+    var readerContent = document.getElementById('readerContent');
+    var readerClose = document.getElementById('readerClose');
+
+    function openReader(articleId) {
+      var article = articlesLibrary[articleId];
+      if (!article) return;
+
+      readerContent.innerHTML =
+        '<div class="reader-meta"><span>' + article.meta + '</span></div>' +
+        '<h3>' + article.title + '</h3>' +
+        article.html;
+
+      readerOverlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+
+      // Le lien "Voir le Guide Premium" doit fermer la modale avant de scroller
+      var premiumLink = document.getElementById('readerPremiumLink');
+      if (premiumLink) {
+        premiumLink.addEventListener('click', function () {
+          closeReader();
+        });
+      }
+    }
+
+    function closeReader() {
+      readerOverlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-article]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openReader(btn.getAttribute('data-article'));
+      });
+    });
+
+    readerClose.addEventListener('click', closeReader);
+    readerOverlay.addEventListener('click', function (e) {
+      if (e.target === readerOverlay) closeReader();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && readerOverlay.classList.contains('is-open')) closeReader();
+    });
   </script>
 
 </body>
