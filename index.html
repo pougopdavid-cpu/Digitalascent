@@ -1,146 +1,454 @@
 <!-- ============================================================
-     LANDING PAGE — LIBERTÉ FINANCIÈRE
-     Bloc unique HTML + CSS + JS, prêt à coller dans Blogger (mode HTML)
-     ============================================================ -->
-<div id="lfw-root">
+     LANDING PAGE — LIBERTÉ FINANCIÈRE EN LIGNE
+     À coller intégralement dans l'éditeur HTML de votre page Blogger.
+     Tout est autonome : CSS + HTML + JS + Formulaire Brevo.
+============================================================ -->
 
-  <!-- ================= HERO ================= -->
-  <section class="lfw-hero">
-    <div class="lfw-hero-glow lfw-glow-a"></div>
-    <div class="lfw-hero-glow lfw-glow-b"></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <svg class="lfw-chart-bg" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="lfwChartFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1BE0A6" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#1BE0A6" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <path class="lfw-chart-line" d="M0,340 C80,320 120,260 200,250 C280,240 300,300 380,280 C460,260 480,150 560,140 C640,130 660,200 740,170 C820,140 860,60 940,40 L1000,20" fill="none" stroke="#1BE0A6" stroke-width="3"/>
-      <path d="M0,340 C80,320 120,260 200,250 C280,240 300,300 380,280 C460,260 480,150 560,140 C640,130 660,200 740,170 C820,140 860,60 940,40 L1000,20 L1000,400 L0,400 Z" fill="url(#lfwChartFill)"/>
-    </svg>
+<style>
+  /* ===================== TOKENS ===================== */
+  #lf-root{
+    --bg:#070b10;
+    --bg-alt:#0c131a;
+    --card:#0f1720;
+    --card-hover:#131e29;
+    --border:rgba(16,242,176,.14);
+    --border-strong:rgba(16,242,176,.35);
+    --emerald:#12f2b0;
+    --emerald-deep:#059669;
+    --gold:#f0b429;
+    --blue:#3b82f6;
+    --text:#eaf1f2;
+    --text-dim:#8ea0ab;
+    --radius:16px;
+    --ff-display:'Space Grotesk', sans-serif;
+    --ff-body:'Inter', Helvetica, Arial, sans-serif;
+    font-family:var(--ff-body);
+    color:var(--text);
+    background:var(--bg);
+    overflow-x:hidden;
+  }
+  #lf-root *{ box-sizing:border-box; margin:0; padding:0; }
+  #lf-root a{ color:inherit; text-decoration:none; }
+  #lf-root ul{ list-style:none; }
+  #lf-root img,#lf-root svg{ display:block; max-width:100%; }
+  #lf-root section{ position:relative; padding:110px 24px; }
+  #lf-root .lf-wrap{ max-width:1160px; margin:0 auto; }
+  #lf-root ::selection{ background:var(--emerald); color:#04120d; }
 
-    <div class="lfw-container lfw-hero-inner">
-      <span class="lfw-eyebrow">💡 Votre plan B commence ici</span>
-      <h1 class="lfw-hero-title">
-        Construisez votre <span class="lfw-gradient-text">liberté financière</span>,<br class="lfw-br-desktop"> un clic à la fois.
-      </h1>
-      <p class="lfw-hero-sub">
-        Des méthodes concrètes, testées et accessibles pour générer des revenus complémentaires en ligne —
-        freelance, missions rémunérées, affiliation. Pas de formule magique, juste une feuille de route claire vers l'indépendance.
+  /* ===================== BACKGROUND TEXTURE ===================== */
+  #lf-root .lf-noise{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.5;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(16,242,176,.09), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(240,180,41,.07), transparent 35%),
+      radial-gradient(circle at 50% 100%, rgba(59,130,246,.08), transparent 45%);
+  }
+
+  /* ===================== NAV ===================== */
+  #lf-root .lf-nav{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px; backdrop-filter:blur(10px);
+    background:rgba(7,11,16,.72); border-bottom:1px solid var(--border);
+  }
+  #lf-root .lf-logo{
+    font-family:var(--ff-display); font-weight:700; font-size:20px; letter-spacing:.3px;
+    display:flex; align-items:center; gap:10px;
+  }
+  #lf-root .lf-logo .dot{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--emerald); box-shadow:0 0 12px 2px rgba(18,242,176,.8);
+  }
+  #lf-root .lf-nav-links{ display:flex; gap:32px; font-size:14.5px; color:var(--text-dim); }
+  #lf-root .lf-nav-links a:hover{ color:var(--emerald); }
+  #lf-root .lf-nav-cta{
+    display:inline-block; font-size:14px; font-weight:600;
+    padding:10px 20px; border-radius:999px;
+    background:var(--emerald); color:#04120d;
+  }
+  #lf-root .lf-burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
+  #lf-root .lf-burger span{ width:24px; height:2px; background:var(--text); display:block; }
+
+  /* ===================== BUTTONS ===================== */
+  #lf-root .lf-btn{
+    position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--ff-body); font-weight:700; font-size:16px; letter-spacing:.2px;
+    padding:17px 34px; border-radius:12px; border:none; cursor:pointer;
+    transition:transform .18s ease, box-shadow .25s ease, filter .25s ease;
+    will-change:transform;
+  }
+  #lf-root .lf-btn-primary{
+    color:#04120d;
+    background:linear-gradient(135deg, var(--emerald), #0bd39a);
+    box-shadow:0 0 0 rgba(18,242,176,0), 0 10px 30px -10px rgba(18,242,176,.55);
+  }
+  #lf-root .lf-btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 26px 4px rgba(18,242,176,.55), 0 16px 34px -12px rgba(18,242,176,.6);
+    filter:brightness(1.05);
+  }
+  #lf-root .lf-btn-primary:active{ transform:translateY(-1px) scale(.98); box-shadow:0 0 14px 2px rgba(18,242,176,.45); }
+
+  #lf-root .lf-btn-gold{
+    color:#1a1300;
+    background:linear-gradient(135deg, var(--gold), #ffd873);
+    box-shadow:0 10px 30px -10px rgba(240,180,41,.5);
+  }
+  #lf-root .lf-btn-gold:hover{ transform:translateY(-3px); box-shadow:0 0 26px 4px rgba(240,180,41,.5); }
+  #lf-root .lf-btn-gold:active{ transform:translateY(-1px) scale(.98); }
+
+  #lf-root .lf-btn-ghost{
+    color:var(--text); background:transparent; border:1px solid var(--border-strong);
+  }
+  #lf-root .lf-btn-ghost:hover{ border-color:var(--emerald); box-shadow:0 0 18px rgba(18,242,176,.25); transform:translateY(-2px); }
+
+  /* ===================== HERO ===================== */
+  #lf-root .lf-hero{ padding-top:96px; text-align:center; }
+  #lf-root .lf-eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
+    color:var(--emerald); letter-spacing:1.6px; text-transform:uppercase;
+    background:rgba(18,242,176,.08); border:1px solid var(--border);
+    padding:8px 16px; border-radius:999px; margin-bottom:26px;
+  }
+  #lf-root .lf-hero h1{
+    font-family:var(--ff-display); font-weight:700;
+    font-size:clamp(2.4rem, 5.6vw, 4.4rem); line-height:1.08; letter-spacing:-1px;
+    max-width:920px; margin:0 auto 24px;
+  }
+  #lf-root .lf-hero h1 .grad{
+    background:linear-gradient(100deg, var(--emerald), var(--gold) 60%, var(--emerald));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  #lf-root .lf-hero p.lf-sub{
+    font-size:clamp(1.02rem,1.6vw,1.2rem); color:var(--text-dim); max-width:640px;
+    margin:0 auto 40px; line-height:1.65;
+  }
+  #lf-root .lf-hero-actions{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; }
+  #lf-root .lf-hero-note{ font-size:13px; color:var(--text-dim); margin-top:14px; }
+
+  /* growth chart signature visual */
+  #lf-root .lf-chart-wrap{
+    max-width:820px; margin:70px auto 0; position:relative;
+  }
+  #lf-root .lf-chart-wrap svg{ width:100%; height:auto; }
+  #lf-root .lf-chart-line{
+    stroke:var(--emerald); stroke-width:3; fill:none;
+    stroke-dasharray:1400; stroke-dashoffset:1400;
+    animation:lf-draw 2.4s cubic-bezier(.4,0,.2,1) forwards .3s;
+    filter:drop-shadow(0 0 6px rgba(18,242,176,.7));
+  }
+  @keyframes lf-draw{ to{ stroke-dashoffset:0; } }
+  #lf-root .lf-chart-dot{
+    fill:var(--gold); filter:drop-shadow(0 0 8px rgba(240,180,41,.9));
+    animation:lf-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes lf-pulse{ 0%,100%{ r:6; } 50%{ r:9; } }
+  #lf-root .lf-chart-tag{
+    font-family:var(--ff-display); font-size:13px; font-weight:600; fill:var(--text);
+  }
+
+  /* ===================== STAT STRIP ===================== */
+  #lf-root .lf-stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    max-width:980px; margin:60px auto 0; padding:0 24px;
+  }
+  #lf-root .lf-stat{ text-align:center; }
+  #lf-root .lf-stat .num{
+    font-family:var(--ff-display); font-size:clamp(1.6rem,3vw,2.3rem); font-weight:700; color:var(--emerald);
+  }
+  #lf-root .lf-stat .label{ font-size:13px; color:var(--text-dim); margin-top:4px; }
+
+  /* ===================== SECTION HEADERS ===================== */
+  #lf-root .lf-sec-head{ text-align:center; max-width:640px; margin:0 auto 56px; }
+  #lf-root .lf-sec-eyebrow{
+    font-size:13px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--gold);
+    margin-bottom:14px; display:block;
+  }
+  #lf-root .lf-sec-head h2{
+    font-family:var(--ff-display); font-size:clamp(1.8rem,3.4vw,2.6rem); font-weight:700; margin-bottom:16px; letter-spacing:-.5px;
+  }
+  #lf-root .lf-sec-head p{ color:var(--text-dim); line-height:1.6; }
+
+  /* ===================== CARDS ===================== */
+  #lf-root .lf-cards{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  #lf-root .lf-card{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    padding:32px 26px; transition:transform .3s ease, border-color .3s ease, background .3s ease, box-shadow .3s ease;
+    position:relative; overflow:hidden;
+  }
+  #lf-root .lf-card::before{
+    content:""; position:absolute; inset:-40% -40% auto auto; width:180px; height:180px;
+    background:radial-gradient(circle, rgba(18,242,176,.16), transparent 70%);
+    opacity:0; transition:opacity .35s ease;
+  }
+  #lf-root .lf-card:hover{
+    transform:translateY(-8px); background:var(--card-hover);
+    border-color:var(--border-strong);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,.6), 0 0 24px -6px rgba(18,242,176,.3);
+  }
+  #lf-root .lf-card:hover::before{ opacity:1; }
+  #lf-root .lf-card-icon{
+    width:50px; height:50px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    background:rgba(18,242,176,.1); border:1px solid var(--border); margin-bottom:22px;
+    color:var(--emerald);
+  }
+  #lf-root .lf-card h3{ font-family:var(--ff-display); font-size:1.2rem; margin-bottom:10px; }
+  #lf-root .lf-card p{ font-size:14.5px; color:var(--text-dim); line-height:1.6; margin-bottom:18px; }
+  #lf-root .lf-card .lf-tag{
+    font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ===================== TRUST SECTION ===================== */
+  #lf-root .lf-trust{ background:var(--bg-alt); }
+  #lf-root .lf-trust-grid{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center;
+  }
+  #lf-root .lf-trust-list{ display:flex; flex-direction:column; gap:22px; margin-top:30px; }
+  #lf-root .lf-trust-item{ display:flex; gap:16px; align-items:flex-start; }
+  #lf-root .lf-trust-check{
+    flex:0 0 auto; width:28px; height:28px; border-radius:8px;
+    background:rgba(18,242,176,.12); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; color:var(--emerald); margin-top:2px;
+  }
+  #lf-root .lf-trust-item h4{ font-size:16px; margin-bottom:5px; font-family:var(--ff-display); }
+  #lf-root .lf-trust-item p{ font-size:14px; color:var(--text-dim); line-height:1.6; }
+  #lf-root .lf-trust-panel{
+    background:linear-gradient(160deg, var(--card), var(--bg));
+    border:1px solid var(--border); border-radius:20px; padding:40px 34px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  }
+  #lf-root .lf-trust-panel .quote{ font-family:var(--ff-display); font-size:1.3rem; line-height:1.5; margin-bottom:22px; }
+  #lf-root .lf-trust-panel .who{ font-size:13.5px; color:var(--text-dim); }
+  #lf-root .lf-trust-panel .who strong{ color:var(--text); }
+  #lf-root .lf-mini-stats{ display:flex; gap:26px; margin-top:28px; padding-top:24px; border-top:1px solid var(--border); }
+  #lf-root .lf-mini-stats div{ text-align:left; }
+  #lf-root .lf-mini-stats .n{ font-family:var(--ff-display); color:var(--gold); font-size:1.4rem; font-weight:700; }
+  #lf-root .lf-mini-stats .l{ font-size:12px; color:var(--text-dim); }
+
+  /* ===================== FINAL CTA ===================== */
+  #lf-root .lf-final{
+    text-align:center; border-radius:28px; max-width:1100px; margin:0 auto;
+    padding:80px 40px; position:relative; overflow:hidden;
+    background:radial-gradient(120% 140% at 50% 0%, rgba(18,242,176,.16), transparent 60%), var(--bg-alt);
+    border:1px solid var(--border-strong);
+  }
+  #lf-root .lf-final h2{
+    font-family:var(--ff-display); font-size:clamp(1.9rem,3.6vw,2.8rem); margin-bottom:18px; letter-spacing:-.5px;
+  }
+  #lf-root .lf-final p{ color:var(--text-dim); max-width:520px; margin:0 auto 36px; line-height:1.6; }
+
+  /* ===================== FOOTER ===================== */
+  #lf-root .lf-footer{
+    padding:44px 24px; text-align:center; color:var(--text-dim); font-size:13.5px;
+    border-top:1px solid var(--border);
+  }
+
+  /* ===================== REVEAL ANIM ===================== */
+  #lf-root .lf-reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  #lf-root .lf-reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ===================== MODAL ===================== */
+  #lf-modal-overlay{
+    position:fixed; inset:0; z-index:999; display:none;
+    align-items:center; justify-content:center; padding:20px;
+    background:rgba(4,7,10,.72); backdrop-filter:blur(6px);
+    opacity:0; transition:opacity .3s ease;
+  }
+  #lf-modal-overlay.lf-open{ display:flex; opacity:1; }
+  #lf-modal-box{
+    position:relative; width:100%; max-width:560px; max-height:90vh; overflow-y:auto;
+    background:#EFF2F7; border-radius:18px; transform:translateY(18px) scale(.97); opacity:0;
+    transition:transform .35s cubic-bezier(.2,.9,.3,1.2), opacity .3s ease;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,.65), 0 0 0 1px rgba(18,242,176,.25);
+  }
+  #lf-modal-overlay.lf-open #lf-modal-box{ transform:translateY(0) scale(1); opacity:1; }
+  #lf-modal-close{
+    position:absolute; top:14px; right:14px; z-index:5; width:34px; height:34px; border-radius:50%;
+    border:none; cursor:pointer; background:#3C4858; color:#fff; font-size:18px; line-height:1;
+    display:flex; align-items:center; justify-content:center; transition:background .2s ease, transform .2s ease;
+  }
+  #lf-modal-close:hover{ background:#12f2b0; color:#04120d; transform:rotate(90deg); }
+  #lf-modal-box .lf-modal-inner{ padding:8px; border-radius:18px; overflow:hidden; }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width:960px){
+    #lf-root .lf-cards{ grid-template-columns:repeat(2,1fr); }
+    #lf-root .lf-trust-grid{ grid-template-columns:1fr; gap:40px; }
+    #lf-root .lf-stats{ grid-template-columns:repeat(2,1fr); row-gap:30px; }
+  }
+  @media (max-width:720px){
+    #lf-root .lf-nav-links{ display:none; }
+    #lf-root .lf-burger{ display:flex; }
+    #lf-root section{ padding:74px 18px; }
+    #lf-root .lf-cards{ grid-template-columns:1fr; }
+    #lf-root .lf-hero-actions{ flex-direction:column; align-items:stretch; }
+    #lf-root .lf-btn{ width:100%; }
+    #lf-root .lf-final{ padding:56px 24px; border-radius:20px; }
+  }
+</style>
+
+<div id="lf-root">
+  <div class="lf-noise"></div>
+
+  <!-- NAV -->
+  <nav class="lf-nav">
+    <div class="lf-logo"><span class="dot"></span> Liberté&nbsp;Digitale</div>
+    <ul class="lf-nav-links">
+      <li><a href="#lf-opportunites">Opportunités</a></li>
+      <li><a href="#lf-confiance">Pourquoi nous</a></li>
+      <li><a href="#lf-cta-final">Rejoindre</a></li>
+    </ul>
+    <button class="lf-btn lf-btn-primary" style="padding:10px 22px;font-size:14px;" data-lf-open>S'inscrire</button>
+    <button class="lf-burger" id="lf-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="lf-hero">
+    <div class="lf-wrap">
+      <span class="lf-eyebrow">🚀 +12 400 membres déjà lancés</span>
+      <h1>Construisez votre <span class="grad">liberté financière</span> grâce à Internet</h1>
+      <p class="lf-sub">
+        Guides concrets, opportunités vérifiées et méthodes pas à pas pour générer des revenus en ligne,
+        où que vous soyez, à votre rythme, sans expérience préalable.
       </p>
+      <div class="lf-hero-actions">
+        <button class="lf-btn lf-btn-primary" data-lf-open>Démarrer gratuitement →</button>
+        <a href="#lf-opportunites" class="lf-btn lf-btn-ghost">Voir les opportunités</a>
+      </div>
+      <p class="lf-hero-note">Aucune carte bancaire requise · Accès immédiat aux guides de démarrage</p>
 
-      <div class="lfw-hero-cta-row">
-        <button class="lfw-btn lfw-btn-primary lfw-cta-open" type="button">
-          <span>Je démarre gratuitement</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <span class="lfw-hero-note">🔒 100% gratuit • Aucune carte bancaire requise</span>
+      <div class="lf-chart-wrap lf-reveal">
+        <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+          <path class="lf-chart-line" d="M20,220 C120,210 160,160 230,150 C300,140 320,190 390,150 C460,110 470,60 560,70 C630,78 650,40 760,30" />
+          <circle class="lf-chart-dot" cx="760" cy="30" r="7"></circle>
+          <text class="lf-chart-tag" x="600" y="55">Vous, dans 90 jours</text>
+        </svg>
       </div>
 
-      <div class="lfw-stats-row">
-        <div class="lfw-stat">
-          <span class="lfw-stat-num" data-count="24800">0</span>
-          <span class="lfw-stat-label">Membres actifs</span>
-        </div>
-        <div class="lfw-stat">
-          <span class="lfw-stat-num" data-count="1250000" data-prefix="€">0</span>
-          <span class="lfw-stat-label">Revenus générés</span>
-        </div>
-        <div class="lfw-stat">
-          <span class="lfw-stat-num" data-count="37">0</span>
-          <span class="lfw-stat-label">Pays représentés</span>
-        </div>
+      <div class="lf-stats">
+        <div class="lf-stat"><div class="num" data-count="12400">0</div><div class="label">Membres actifs</div></div>
+        <div class="lf-stat"><div class="num" data-count="98">0</div><div class="label">% de satisfaction</div></div>
+        <div class="lf-stat"><div class="num" data-count="40">0</div><div class="label">Guides &amp; formations</div></div>
+        <div class="lf-stat"><div class="num" data-count="5">0</div><div class="label">Années d'expertise</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= OPPORTUNITÉS / CARTES ================= -->
-  <section class="lfw-section">
-    <div class="lfw-container">
-      <div class="lfw-section-head">
-        <span class="lfw-eyebrow lfw-eyebrow-light">Les opportunités</span>
-        <h2 class="lfw-section-title">Choisissez votre voie vers le revenu en ligne</h2>
-        <p class="lfw-section-sub">Quatre leviers concrets, expliqués pas à pas, pour démarrer sans expérience préalable.</p>
+  <!-- OPPORTUNITES / CARDS -->
+  <section id="lf-opportunites">
+    <div class="lf-wrap">
+      <div class="lf-sec-head lf-reveal">
+        <span class="lf-sec-eyebrow">Vos leviers de revenus</span>
+        <h2>4 voies concrètes pour générer des revenus en ligne</h2>
+        <p>Chaque opportunité est accompagnée d'un guide détaillé, testé et mis à jour régulièrement.</p>
       </div>
 
-      <div class="lfw-cards-grid">
-        <article class="lfw-card lfw-card-emerald">
-          <div class="lfw-card-icon">💼</div>
-          <h3>Freelance</h3>
-          <p>Vendez vos compétences (rédaction, design, développement, traduction...) à des clients du monde entier, à votre rythme.</p>
-        </article>
+      <div class="lf-cards">
+        <div class="lf-card lf-reveal">
+          <div class="lf-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v4H4z"/><path d="M4 10h10v10H4z"/><path d="M16 10h4v10h-4z"/></svg>
+          </div>
+          <span class="lf-tag">Freelance</span>
+          <h3>Vendez vos compétences</h3>
+          <p>Rédaction, design, développement, montage vidéo : transformez un savoir-faire en revenu récurrent sur les plateformes freelance.</p>
+        </div>
 
-        <article class="lfw-card lfw-card-gold">
-          <div class="lfw-card-icon">📋</div>
-          <h3>Sondages &amp; Missions rémunérées</h3>
-          <p>Complétez des missions simples et des études rémunérées auprès de plateformes fiables, dès votre premier jour.</p>
-        </article>
+        <div class="lf-card lf-reveal">
+          <div class="lf-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+          </div>
+          <span class="lf-tag">Missions rémunérées</span>
+          <h3>Sondages &amp; micro-tâches</h3>
+          <p>Complétez des missions simples et rémunérées auprès d'instituts et de plateformes fiables, sans compétence technique requise.</p>
+        </div>
 
-        <article class="lfw-card lfw-card-blue">
-          <div class="lfw-card-icon">🚀</div>
-          <h3>Affiliation</h3>
-          <p>Recommandez des produits que vous aimez et touchez une commission sur chaque vente générée grâce à vous.</p>
-        </article>
+        <div class="lf-card lf-reveal">
+          <div class="lf-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M4 12a8 8 0 0 1 14-5"/><path d="M20 12a8 8 0 0 1-14 5"/></svg>
+          </div>
+          <span class="lf-tag">Affiliation</span>
+          <h3>Marketing d'affiliation</h3>
+          <p>Recommandez des produits que vous aimez et touchez une commission à chaque vente générée grâce à vos liens personnalisés.</p>
+        </div>
 
-        <article class="lfw-card lfw-card-emerald">
-          <div class="lfw-card-icon">🎓</div>
-          <h3>Formations &amp; Astuces exclusives</h3>
-          <p>Accédez à des guides pratiques et des retours d'expérience réels pour progresser plus vite, sans perdre de temps.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= POURQUOI NOUS FAIRE CONFIANCE ================= -->
-  <section class="lfw-section lfw-trust-section">
-    <div class="lfw-container lfw-trust-grid">
-      <div class="lfw-trust-text">
-        <span class="lfw-eyebrow lfw-eyebrow-light">Pourquoi nous faire confiance</span>
-        <h2 class="lfw-section-title">Une communauté qui avance, des méthodes qui fonctionnent.</h2>
-        <p class="lfw-section-sub lfw-trust-sub">
-          Nous ne vendons pas de rêve. Nous partageons des méthodes éprouvées, expliquées simplement,
-          pour que chacun puisse construire ses propres revenus en ligne — étape par étape.
-        </p>
-
-        <ul class="lfw-trust-list">
-          <li><span class="lfw-check">✓</span> Méthodes testées et mises à jour régulièrement</li>
-          <li><span class="lfw-check">✓</span> Communauté active et bienveillante de +24 000 membres</li>
-          <li><span class="lfw-check">✓</span> Guides gratuits, sans jargon, orientés action</li>
-          <li><span class="lfw-check">✓</span> Support réactif pour vous accompagner à chaque étape</li>
-        </ul>
-
-        <button class="lfw-btn lfw-btn-outline lfw-cta-open" type="button">Rejoindre la communauté</button>
-      </div>
-
-      <div class="lfw-trust-visual" aria-hidden="true">
-        <div class="lfw-visual-card">
-          <div class="lfw-visual-row"><span>Revenu freelance</span><span class="lfw-visual-bar"><i style="width:82%"></i></span></div>
-          <div class="lfw-visual-row"><span>Missions rémunérées</span><span class="lfw-visual-bar"><i style="width:64%"></i></span></div>
-          <div class="lfw-visual-row"><span>Affiliation</span><span class="lfw-visual-bar"><i style="width:91%"></i></span></div>
-          <div class="lfw-visual-badge">📈 Croissance mensuelle moyenne : <b>+18%</b></div>
+        <div class="lf-card lf-reveal">
+          <div class="lf-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l2-4h14l2 4"/><path d="M5 7h14v13H5z"/><path d="M9 11a3 3 0 0 0 6 0"/></svg>
+          </div>
+          <span class="lf-tag">Vente en ligne</span>
+          <h3>Boutique &amp; dropshipping</h3>
+          <p>Lancez une boutique en ligne sans stock ni investissement lourd, et apprenez à trouver des produits gagnants.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= CTA FINAL ================= -->
-  <section class="lfw-final-cta">
-    <div class="lfw-container lfw-final-inner">
-      <h2>Prêt à changer votre trajectoire financière ?</h2>
-      <p>Rejoignez gratuitement une communauté déterminée à atteindre l'indépendance financière — dès aujourd'hui.</p>
-      <button class="lfw-btn lfw-btn-primary lfw-btn-lg lfw-cta-open" type="button">
-        <span>Je rejoins gratuitement</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+  <!-- CONFIANCE -->
+  <section id="lf-confiance" class="lf-trust">
+    <div class="lf-wrap lf-trust-grid">
+      <div class="lf-reveal">
+        <span class="lf-sec-eyebrow">Pourquoi nous faire confiance</span>
+        <h2 style="font-family:var(--ff-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-.5px;">
+          Une méthode claire, testée par des milliers de membres
+        </h2>
+        <div class="lf-trust-list">
+          <div class="lf-trust-item">
+            <div class="lf-trust-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div><h4>Guides actualisés en continu</h4><p>Nos méthodes sont revues chaque mois pour rester alignées avec les plateformes et opportunités réelles.</p></div>
+          </div>
+          <div class="lf-trust-item">
+            <div class="lf-trust-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div><h4>Aucune promesse irréaliste</h4><p>Nous parlons de résultats concrets et progressifs, pas de gains instantanés ou garantis.</p></div>
+          </div>
+          <div class="lf-trust-item">
+            <div class="lf-trust-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div><h4>Communauté active</h4><p>Échangez avec des milliers de membres qui avancent sur les mêmes objectifs que vous.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lf-trust-panel lf-reveal">
+        <p class="quote">« En 3 mois, j'ai structuré une activité freelance qui me rapporte un vrai complément de revenu, en suivant simplement les guides. »</p>
+        <p class="who"><strong>Amélie K.</strong> — Membre depuis 2024</p>
+        <div class="lf-mini-stats">
+          <div><div class="n">4.9/5</div><div class="l">Note moyenne</div></div>
+          <div><div class="n">+3 200</div><div class="l">Avis vérifiés</div></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ================= MODAL / POPUP BREVO ================= -->
-  <div class="lfw-modal-overlay" id="lfwModalOverlay">
-    <div class="lfw-modal-box" role="dialog" aria-modal="true" aria-label="Formulaire d'inscription">
-      <button class="lfw-modal-close" id="lfwModalClose" aria-label="Fermer la fenêtre" type="button">&times;</button>
-      <div class="lfw-modal-content">
+  <!-- CTA FINAL -->
+  <section id="lf-cta-final">
+    <div class="lf-final lf-reveal">
+      <h2>Prêt à reprendre le contrôle de vos revenus ?</h2>
+      <p>Rejoignez gratuitement notre newsletter et recevez immédiatement nos guides de démarrage pour lancer votre première source de revenu en ligne.</p>
+      <button class="lf-btn lf-btn-gold" data-lf-open>Je rejoins gratuitement</button>
+    </div>
+  </section>
+
+  <footer class="lf-footer">
+    © <span id="lf-year"></span> Liberté Digitale — Tous droits réservés.
+  </footer>
+
+  <!-- ===================== MODAL / POPUP BREVO ===================== -->
+  <div id="lf-modal-overlay">
+    <div id="lf-modal-box">
+      <button id="lf-modal-close" aria-label="Fermer">✕</button>
+      <div class="lf-modal-inner">
 
 <!-- FORMULAIRE SÉCURISÉ & STYLISÉ BREVO - DIGITAL ASCENT -->
 <div style="background-color: #1E293B; border: 1px solid #334155; border-radius: 16px; padding: 30px 24px; text-align: center; max-width: 480px; margin: 0 auto; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);">
@@ -185,460 +493,130 @@
 
 </div>
 
-<style>
-  @font-face {
-    font-display: block;
-    font-family: Roboto;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
-  }
-  @font-face {
-    font-display: fallback;
-    font-family: Roboto;
-    font-weight: 600;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
-  }
-  @font-face {
-    font-display: fallback;
-    font-family: Roboto;
-    font-weight: 700;
-    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
-  }
-  :where(.sib-form-message-panel) { display: none; }
-  :where(.sib-form-message-panel .sib-notification__icon) { width: 20px; height: 20px; }
-  #sib-container input:-ms-input-placeholder { font-family: Helvetica, sans-serif; text-align: left; color: #c0ccda; }
-
-
       </div>
     </div>
   </div>
-
 </div>
-<!-- ================= /lfw-root ================= -->
-
-<style>
-  #lfw-root {
-    --lfw-bg: #0A0E14;
-    --lfw-bg-alt: #0D1420;
-    --lfw-surface: #121A26;
-    --lfw-surface-2: #16202E;
-    --lfw-border: #22303F;
-    --lfw-emerald: #1BE0A6;
-    --lfw-emerald-dark: #0FA37B;
-    --lfw-gold: #F0B94D;
-    --lfw-gold-dark: #C9932E;
-    --lfw-blue: #3D8BFD;
-    --lfw-text: #F3F6FA;
-    --lfw-text-muted: #9AACC0;
-    --lfw-radius: 16px;
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
-    color: var(--lfw-text);
-    background: var(--lfw-bg);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
-
-  #lfw-root * { box-sizing: border-box; }
-  #lfw-root h1, #lfw-root h2, #lfw-root h3 {
-    font-family: 'Sora', 'Inter', sans-serif;
-    margin: 0;
-    line-height: 1.15;
-  }
-  #lfw-root p { margin: 0; color: var(--lfw-text-muted); line-height: 1.6; }
-  #lfw-root ul { margin: 0; padding: 0; list-style: none; }
-  #lfw-root button { font-family: inherit; cursor: pointer; }
-
-  .lfw-container {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ---------- Eyebrow ---------- */
-  .lfw-eyebrow {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--lfw-emerald);
-    background: rgba(27, 224, 166, 0.1);
-    border: 1px solid rgba(27, 224, 166, 0.3);
-    padding: 6px 14px;
-    border-radius: 999px;
-    margin-bottom: 18px;
-  }
-  .lfw-eyebrow-light { color: var(--lfw-gold); background: rgba(240, 185, 77, 0.1); border-color: rgba(240, 185, 77, 0.3); }
-
-  /* ---------- HERO ---------- */
-  .lfw-hero {
-    position: relative;
-    padding: 100px 0 70px;
-    background: radial-gradient(120% 100% at 50% -10%, #142033 0%, var(--lfw-bg) 60%);
-    overflow: hidden;
-    text-align: center;
-  }
-  .lfw-hero-glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .lfw-glow-a { width: 420px; height: 420px; background: var(--lfw-emerald); top: -120px; left: -100px; animation: lfwFloat 9s ease-in-out infinite; }
-  .lfw-glow-b { width: 380px; height: 380px; background: var(--lfw-gold); bottom: -140px; right: -100px; animation: lfwFloat 11s ease-in-out infinite reverse; }
-  @keyframes lfwFloat {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(30px, -20px); }
-  }
-
-  .lfw-chart-bg {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    width: 100%; height: 55%;
-    opacity: 0.6;
-    z-index: 0;
-  }
-  .lfw-chart-line {
-    stroke-dasharray: 1600;
-    stroke-dashoffset: 1600;
-    animation: lfwDraw 2.6s ease-out forwards 0.3s;
-  }
-  @keyframes lfwDraw { to { stroke-dashoffset: 0; } }
-
-  .lfw-hero-inner { position: relative; z-index: 1; }
-  .lfw-hero-title {
-    font-size: clamp(32px, 5.4vw, 58px);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  .lfw-gradient-text {
-    background: linear-gradient(90deg, var(--lfw-emerald), var(--lfw-gold));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .lfw-hero-sub {
-    max-width: 620px;
-    margin: 22px auto 0;
-    font-size: 17px;
-  }
-  .lfw-hero-cta-row {
-    margin-top: 36px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-  .lfw-hero-note { font-size: 13px; color: var(--lfw-text-muted); }
-
-  .lfw-stats-row {
-    margin-top: 64px;
-    display: flex;
-    justify-content: center;
-    gap: 56px;
-    flex-wrap: wrap;
-  }
-  .lfw-stat { display: flex; flex-direction: column; align-items: center; }
-  .lfw-stat-num {
-    font-family: 'Sora', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--lfw-text);
-  }
-  .lfw-stat-label { font-size: 13px; color: var(--lfw-text-muted); margin-top: 4px; }
-
-  /* ---------- BUTTONS ---------- */
-  .lfw-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: none;
-    border-radius: 12px;
-    padding: 16px 30px;
-    font-size: 15.5px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.25s ease;
-    will-change: transform;
-  }
-  .lfw-btn svg { transition: transform 0.2s ease; }
-  .lfw-btn:hover svg { transform: translateX(3px); }
-  .lfw-btn:active { transform: scale(0.96); }
-
-  .lfw-btn-primary {
-    color: #06110D;
-    background: linear-gradient(100deg, var(--lfw-emerald), var(--lfw-gold));
-    box-shadow: 0 8px 24px -6px rgba(27, 224, 166, 0.45);
-  }
-  .lfw-btn-primary:hover {
-    box-shadow: 0 10px 34px -4px rgba(27, 224, 166, 0.7), 0 0 0 1px rgba(240, 185, 77, 0.4);
-    transform: translateY(-2px);
-  }
-  .lfw-btn-lg { padding: 18px 36px; font-size: 17px; }
-
-  .lfw-btn-outline {
-    color: var(--lfw-text);
-    background: transparent;
-    border: 1.5px solid var(--lfw-border);
-    margin-top: 30px;
-  }
-  .lfw-btn-outline:hover {
-    border-color: var(--lfw-emerald);
-    color: var(--lfw-emerald);
-    box-shadow: 0 0 0 4px rgba(27, 224, 166, 0.12);
-    transform: translateY(-2px);
-  }
-
-  /* ---------- SECTIONS ---------- */
-  .lfw-section { padding: 90px 0; }
-  .lfw-section-head { max-width: 640px; margin: 0 auto 52px; text-align: center; }
-  .lfw-section-title { font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; margin-bottom: 14px; }
-  .lfw-section-sub { font-size: 16px; }
-
-  /* ---------- CARDS ---------- */
-  .lfw-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
-  }
-  .lfw-card {
-    background: linear-gradient(180deg, var(--lfw-surface), var(--lfw-surface-2));
-    border: 1px solid var(--lfw-border);
-    border-radius: var(--lfw-radius);
-    padding: 30px 24px;
-    text-align: left;
-    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-  }
-  .lfw-card h3 { font-size: 19px; margin-bottom: 10px; }
-  .lfw-card p { font-size: 14.5px; }
-  .lfw-card-icon {
-    width: 52px; height: 52px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-    border-radius: 12px;
-    margin-bottom: 18px;
-    background: rgba(255,255,255,0.04);
-  }
-  .lfw-card:hover { transform: translateY(-8px); }
-  .lfw-card-emerald:hover { border-color: var(--lfw-emerald); box-shadow: 0 16px 40px -14px rgba(27, 224, 166, 0.45); }
-  .lfw-card-emerald .lfw-card-icon { box-shadow: inset 0 0 0 1px rgba(27,224,166,0.35); }
-  .lfw-card-gold:hover { border-color: var(--lfw-gold); box-shadow: 0 16px 40px -14px rgba(240, 185, 77, 0.45); }
-  .lfw-card-gold .lfw-card-icon { box-shadow: inset 0 0 0 1px rgba(240,185,77,0.35); }
-  .lfw-card-blue:hover { border-color: var(--lfw-blue); box-shadow: 0 16px 40px -14px rgba(61, 139, 253, 0.45); }
-  .lfw-card-blue .lfw-card-icon { box-shadow: inset 0 0 0 1px rgba(61,139,253,0.35); }
-
-  /* ---------- TRUST ---------- */
-  .lfw-trust-section { background: var(--lfw-bg-alt); }
-  .lfw-trust-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .lfw-trust-text { text-align: left; }
-  .lfw-trust-sub { margin: 16px 0 26px; }
-  .lfw-trust-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 15px;
-    color: var(--lfw-text);
-    padding: 9px 0;
-    border-bottom: 1px solid var(--lfw-border);
-  }
-  .lfw-trust-list li:last-child { border-bottom: none; }
-  .lfw-check {
-    color: var(--lfw-emerald);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .lfw-visual-card {
-    background: linear-gradient(180deg, var(--lfw-surface), var(--lfw-surface-2));
-    border: 1px solid var(--lfw-border);
-    border-radius: 20px;
-    padding: 30px;
-  }
-  .lfw-visual-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; font-size: 13.5px; color: var(--lfw-text-muted); }
-  .lfw-visual-bar { display: block; height: 8px; border-radius: 999px; background: rgba(255,255,255,0.06); overflow: hidden; }
-  .lfw-visual-bar i {
-    display: block; height: 100%;
-    background: linear-gradient(90deg, var(--lfw-emerald), var(--lfw-gold));
-    border-radius: 999px;
-    transform-origin: left;
-    transform: scaleX(0);
-    transition: transform 1.1s cubic-bezier(.2,.8,.2,1);
-  }
-  .lfw-visual-card.lfw-in-view .lfw-visual-bar i { transform: scaleX(1); }
-  .lfw-visual-badge {
-    margin-top: 6px;
-    font-size: 13.5px;
-    background: rgba(27,224,166,0.08);
-    border: 1px solid rgba(27,224,166,0.25);
-    color: var(--lfw-text);
-    padding: 12px 14px;
-    border-radius: 10px;
-  }
-
-  /* ---------- FINAL CTA ---------- */
-  .lfw-final-cta {
-    background: linear-gradient(120deg, #0C2C24, #0A0E14 55%, #23190A);
-    padding: 90px 0;
-    text-align: center;
-  }
-  .lfw-final-inner h2 { font-size: clamp(26px, 3.6vw, 38px); margin-bottom: 14px; }
-  .lfw-final-inner p { max-width: 520px; margin: 0 auto 32px; font-size: 16px; }
-
-  /* ---------- MODAL ---------- */
-  .lfw-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(6, 10, 15, 0.75);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  .lfw-modal-overlay.lfw-open { opacity: 1; visibility: visible; }
-  .lfw-modal-box {
-    position: relative;
-    width: 100%;
-    max-width: 560px;
-    max-height: 88vh;
-    overflow-y: auto;
-    background: #EFF2F7;
-    border-radius: 14px;
-    transform: translateY(24px) scale(0.97);
-    opacity: 0;
-    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.35s ease;
-  }
-  .lfw-modal-overlay.lfw-open .lfw-modal-box {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  .lfw-modal-close {
-    position: absolute;
-    top: 12px; right: 14px;
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(0,0,0,0.06);
-    color: #3C4858;
-    font-size: 22px;
-    line-height: 1;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-  .lfw-modal-close:hover { background: rgba(0,0,0,0.12); transform: rotate(90deg); }
-  .lfw-modal-content { padding: 6px; }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 900px) {
-    .lfw-cards-grid { grid-template-columns: repeat(2, 1fr); }
-    .lfw-trust-grid { grid-template-columns: 1fr; }
-    .lfw-trust-text { text-align: center; }
-    .lfw-trust-list li { text-align: left; }
-  }
-  @media (max-width: 560px) {
-    .lfw-hero { padding: 70px 0 50px; }
-    .lfw-cards-grid { grid-template-columns: 1fr; }
-    .lfw-stats-row { gap: 30px; }
-    .lfw-section { padding: 64px 0; }
-    .lfw-br-desktop { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    #lfw-root * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  }
-</style>
 
 <script>
-(function () {
-  var root = document.getElementById('lfw-root');
-  if (!root) return;
+(function(){
+  var root = document.getElementById('lf-root');
+  if(!root) return;
 
-  /* ---- Modal open/close ---- */
-  var overlay = document.getElementById('lfwModalOverlay');
-  var closeBtn = document.getElementById('lfwModalClose');
-  var openTriggers = root.querySelectorAll('.lfw-cta-open');
+  /* Année footer */
+  var yearEl = document.getElementById('lf-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-  function openModal() {
-    overlay.classList.add('lfw-open');
+  /* ---------- MODAL ---------- */
+  var overlay = document.getElementById('lf-modal-overlay');
+  var closeBtn = document.getElementById('lf-modal-close');
+  var box = document.getElementById('lf-modal-box');
+  var openTriggers = root.querySelectorAll('[data-lf-open]');
+  var lastFocused = null;
+
+  function openModal(){
+    lastFocused = document.activeElement;
+    overlay.classList.add('lf-open');
     document.body.style.overflow = 'hidden';
+    if(closeBtn) closeBtn.focus();
   }
-  function closeModal() {
-    overlay.classList.remove('lfw-open');
+  function closeModal(){
+    overlay.classList.remove('lf-open');
     document.body.style.overflow = '';
+    if(lastFocused && lastFocused.focus) lastFocused.focus();
   }
 
-  openTriggers.forEach(function (btn) {
-    btn.addEventListener('click', openModal);
-  });
-  closeBtn.addEventListener('click', closeModal);
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) closeModal();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && overlay.classList.contains('lfw-open')) closeModal();
+  openTriggers.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal();
+    });
   });
 
-  /* ---- Count-up stats ---- */
-  var statEls = root.querySelectorAll('.lfw-stat-num');
-  function animateCount(el) {
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('lf-open')) closeModal();
+  });
+
+  /* Empêche la fermeture quand on clique dans la boîte */
+  if(box){
+    box.addEventListener('click', function(e){ e.stopPropagation(); });
+  }
+
+  /* ---------- MENU MOBILE ---------- */
+  var burger = document.getElementById('lf-burger');
+  var navLinks = root.querySelector('.lf-nav-links');
+  if(burger && navLinks){
+    burger.addEventListener('click', function(){
+      var isOpen = navLinks.style.display === 'flex';
+      navLinks.style.cssText = isOpen
+        ? ''
+        : 'display:flex;position:absolute;top:64px;left:0;right:0;background:#0c131a;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid rgba(16,242,176,.14);';
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ navLinks.style.display = ''; });
+    });
+  }
+
+  /* ---------- SCROLL SMOOTH ---------- */
+  root.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var target = document.querySelector(a.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({ behavior:'smooth', block:'start' });
+      }
+    });
+  });
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  var revealEls = root.querySelectorAll('.lf-reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:0.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- COMPTEURS ANIMÉS ---------- */
+  var counters = root.querySelectorAll('[data-count]');
+  function animateCounter(el){
     var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    var prefix = el.getAttribute('data-prefix') || '';
     var duration = 1600;
     var start = null;
-
-    function step(ts) {
-      if (!start) start = ts;
+    function step(ts){
+      if(!start) start = ts;
       var progress = Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
       var value = Math.floor(eased * target);
-      el.textContent = prefix + value.toLocaleString('fr-FR');
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        el.textContent = prefix + target.toLocaleString('fr-FR');
-      }
+      el.textContent = value.toLocaleString('fr-FR');
+      if(progress < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString('fr-FR');
     }
     requestAnimationFrame(step);
   }
-
-  var statsObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        animateCount(entry.target);
-        statsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-  statEls.forEach(function (el) { statsObserver.observe(el); });
-
-  /* ---- Trust visual bars reveal ---- */
-  var visualCard = root.querySelector('.lfw-visual-card');
-  if (visualCard) {
-    var visualObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('lfw-in-view');
-          visualObserver.unobserve(entry.target);
+  if('IntersectionObserver' in window && counters.length){
+    var ioCount = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCounter(entry.target);
+          ioCount.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.3 });
-    visualObserver.observe(visualCard);
+    }, { threshold:0.4 });
+    counters.forEach(function(el){ ioCount.observe(el); });
   }
 })();
 </script>
