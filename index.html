@@ -646,3 +646,188 @@
   }
 })();
 </script>
+     <!-- Widget Chatbot Personnalisé Digital Ascent -->
+<style>
+  #da-chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #da-chat-box {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    height: 420px;
+    background: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: sans-serif;
+  }
+  .da-chat-header {
+    background: #0f172a;
+    padding: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .da-chat-header button {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .da-chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .da-msg {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .da-msg-bot {
+    background: #334155;
+    align-self: flex-start;
+  }
+  .da-msg-user {
+    background: #10b981;
+    color: #fff;
+    align-self: flex-end;
+  }
+  .da-chat-input {
+    display: flex;
+    padding: 8px;
+    background: #0f172a;
+    border-top: 1px solid #334155;
+  }
+  .da-chat-input input {
+    flex: 1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    outline: none;
+  }
+  .da-chat-input button {
+    background: #10b981;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .da-whatsapp-link {
+    display: inline-block;
+    margin-top: 6px;
+    color: #25d366;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>
+
+<button id="da-chat-button" onclick="toggleDaChat()">💬 Chat</button>
+
+<div id="da-chat-box">
+  <div class="da-chat-header">
+    <span>Assistant Digital Ascent</span>
+    <button onclick="toggleDaChat()">✕</button>
+  </div>
+  <div class="da-chat-messages" id="da-messages">
+    <div class="da-msg da-msg-bot">Bonjour ! 👋 Comment puis-je vous aider aujourd'hui ?</div>
+  </div>
+  <div class="da-chat-input">
+    <input type="text" id="da-user-input" placeholder="Posez votre question..." onkeypress="handleDaKeyPress(event)" />
+    <button onclick="sendDaMessage()">Envoyer</button>
+  </div>
+</div>
+
+<script>
+  // Remplace ce numéro par ton vrai numéro WhatsApp (avec indicatif sans le +)
+  const WHATSAPP_NUMBER = "237676619977";
+
+  function toggleDaChat() {
+    const box = document.getElementById('da-chat-box');
+    box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  function handleDaKeyPress(e) {
+    if (e.key === 'Enter') sendDaMessage();
+  }
+
+  function sendDaMessage() {
+    const input = document.getElementById('da-user-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    input.value = '';
+
+    setTimeout(() => {
+      botResponse(text);
+    }, 500);
+  }
+
+  function addMessage(text, sender) {
+    const container = document.getElementById('da-messages');
+    const msg = document.createElement('div');
+    msg.className = `da-msg da-msg-${sender}`;
+    msg.innerHTML = text;
+    container.appendChild(msg);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function botResponse(userText) {
+    const query = userText.toLowerCase();
+
+    // RÈGLES DE RÉPONSES AUTOMATIQUES DU BOT
+    if (query.includes('article') || query.includes('blog') || query.includes('guide')) {
+      addMessage("Vous pouvez consulter tous nos guides et contenus dans la section <a href='articles.html' style='color:#10b981;'>Articles</a> !", 'bot');
+    } 
+    else if (query.includes('tarif') || query.includes('prix') || query.includes('combien')) {
+      addMessage("Nos articles gratuits sont accessibles directement sur le site. Pour nos services d'accompagnement, contactez-nous directement !", 'bot');
+    } 
+    else if (query.includes('bonjour') || query.includes('salut') || query.includes('hello')) {
+      addMessage("Salut ! Que souhaitez-vous savoir sur Digital Ascent ?", 'bot');
+    } 
+    else {
+      // SI LE BOT EST BLOQUÉ : Transfert vers un humain (WhatsApp)
+      const waMessage = encodeURIComponent(`Bonjour, j'ai une question : "${userText}"`);
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`;
+      
+      addMessage(`Je ne suis pas sûr de comprendre votre demande. 🤖<br><br>Un conseiller humain peut vous répondre sur WhatsApp :<br><a href='${waUrl}' target='_blank' class='da-whatsapp-link'>👉 Parler à un humain</a>`, 'bot');
+    }
+  }
+</script>
+
