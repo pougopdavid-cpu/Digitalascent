@@ -26,7 +26,1015 @@
   <meta property="og:image" content="https://i.postimg.cc/30C4b7XK/a-joyful-photograph-of-a-cheerful-man-ho-LHOMhdi-Xhy-J-i1Vw-L2h-UQ-jg-G-7DHf-Tzyvo6qwhu-OVq-Q-sd-sma.jpg">
   <meta property="og:url" content="https://digitascent.netlify.app">
 </head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Ascent - Articles & Guides Gratuits</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-dark: #070c18;
+            --card-bg: #0b1329;
+            --card-hover: #101c3d;
+            --border-color: #1e293b;
+            --accent-green: #10b981;
+            --accent-green-glow: rgba(16, 185, 129, 0.35);
+            --accent-blue: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --badge-bg: rgba(16, 185, 129, 0.12);
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* --- TOP BANNER --- */
+        .top-banner-container {
+            max-width: 800px;
+            margin: 10px auto 30px;
+            padding: 0 24px;
+        }
+
+        .btn-top-banner {
+            width: 100%;
+            background: linear-gradient(90deg, #ef4444 0%, #10b981 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 24px;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-top-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.35);
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 24px 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--badge-bg);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 20px;
+            color: var(--accent-green);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- ARTICLES GRID --- */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 80px;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.15);
+            background: var(--card-hover);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            height: 190px;
+            width: 100%;
+            overflow: hidden;
+            background: #131f3d;
+        }
+
+        .card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .article-card:hover .card-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: var(--accent-green);
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .card-icon-illustration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 54px;
+            color: #ef4444;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(11, 19, 41, 0) 70%);
+        }
+
+        .card-icon-illustration.target-icon {
+            color: #ef4444;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(11, 19, 41, 0) 70%);
+        }
+
+        .card-icon-illustration.box-icon {
+            color: #ef4444;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, rgba(11, 19, 41, 0) 70%);
+        }
+
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .card-meta i {
+            font-size: 12px;
+            color: var(--accent-green);
+        }
+
+        .card-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .btn-card-action {
+            width: 100%;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--accent-green);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .article-card:hover .btn-card-action {
+            background: var(--accent-green);
+            color: #000;
+            border-color: var(--accent-green);
+            box-shadow: 0 4px 15px var(--accent-green-glow);
+        }
+
+        /* --- COMMUNITY SECTION --- */
+        .community-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 60px;
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .comm-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .comm-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .comm-card.whatsapp .comm-icon {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-green);
+        }
+
+        .comm-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .comm-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn-comm {
+            width: 100%;
+            padding: 11px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .btn-comm.green {
+            background: var(--accent-green);
+            color: #000000;
+        }
+
+        .btn-comm.outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-comm.outline:hover {
+            border-color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- ARTICLE READER MODAL (FULL PAGE OVERLAY) --- */
+        .article-reader-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            z-index: 999;
+            overflow-y: auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .article-reader-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .reader-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent-green);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+
+        .reader-header {
+            position: sticky;
+            top: 0;
+            background: rgba(7, 12, 24, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            z-index: 100;
+        }
+
+        .reader-header-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent-green);
+        }
+
+        .reader-container {
+            max-width: 860px;
+            margin: 40px auto 100px;
+            padding: 0 24px;
+        }
+
+        .reader-badge {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 16px;
+        }
+
+        .reader-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .reader-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 36px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .reader-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .article-content {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .article-content p {
+            margin-bottom: 24px;
+        }
+
+        .article-content h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 40px 0 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .article-content h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin: 28px 0 12px;
+        }
+
+        .callout-box {
+            background: #131f3d;
+            border-left: 4px solid var(--accent-green);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 32px 0;
+        }
+
+        .callout-box p {
+            margin: 0;
+            font-weight: 500;
+            color: #f1f5f9;
+        }
+
+        .tool-card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .tool-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .tool-item-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .tool-number {
+            background: var(--accent-green);
+            color: #000;
+            font-weight: 800;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .tool-name {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .article-cta-box {
+            background: linear-gradient(135deg, #131f3d 0%, #0b1329 100%);
+            border: 1px solid var(--accent-green);
+            border-radius: 16px;
+            padding: 36px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+        }
+
+        .article-cta-box h3 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-cta-box p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+
+        .btn-cta-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-green);
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .btn-cta-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-green-glow);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+            .reader-title {
+                font-size: 28px;
+            }
+            .reader-container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY TOP BANNER -->
+    <div class="top-banner-container">
+        <button class="btn-top-banner" onclick="alert('Redirection vers la page de déblocage du Guide Premium Digital Ascent')">
+            Je débloque le guide maintenant <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">
+            Digital <span>Ascent</span>
+        </a>
+        <nav>
+            <a href="#guide">Guide Premium</a>
+            <a href="#articles" style="color: var(--accent-green);">Articles</a>
+            <a href="#support">Support</a>
+        </nav>
+    </header>
+
+    <!-- MAIN HOMEPAGE CONTENT -->
+    <main class="main-content" id="articles">
+        
+        <!-- SECTION TITLE -->
+        <div class="section-header">
+            <div class="section-tag"><i class="fa-solid fa-book-open"></i> Ressources gratuites</div>
+            <h1 class="section-title">Articles & Guides Gratuits</h1>
+            <p class="section-subtitle">Des contenus clairs et actionnables pour poser les bonnes bases, sans jargon inutile.</p>
+        </div>
+
+        <!-- ARTICLES GRID (ALL 3 UNLOCKED) -->
+        <div class="articles-grid">
+            
+            <!-- CARD 1 -->
+            <div class="article-card" onclick="openArticle('article1')">
+                <div class="card-image-wrapper">
+                    <span class="card-badge">Gratuit</span>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Créer son business">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-clock"></i> 4 min</span>
+                        <span>•</span>
+                        <span>Débutant</span>
+                    </div>
+                    <h2 class="card-title">Comment Créer son Business en Ligne quand on Débute ?</h2>
+                    <p class="card-excerpt">Pas besoin de tout savoir pour démarrer. Découvrez les 3 étapes essentielles pour lancer votre activité en ligne sans vous disperser.</p>
+                    <div class="btn-card-action">
+                        Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 (UNLOCKED) -->
+            <div class="article-card" onclick="openArticle('article2')">
+                <div class="card-image-wrapper">
+                    <div class="card-icon-illustration box-icon">
+                        <i class="fa-solid fa-box-archive"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-clock"></i> 5 min</span>
+                        <span>•</span>
+                        <span>Intermédiaire</span>
+                    </div>
+                    <h2 class="card-title">Les 5 Meilleurs Outils Gratuits pour Automatiser son Business</h2>
+                    <p class="card-excerpt">Gagnez du temps dès le lancement grâce à une sélection d'outils gratuits pour automatiser vos tâches répétitives.</p>
+                    <div class="btn-card-action">
+                        Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 (UNLOCKED) -->
+            <div class="article-card" onclick="openArticle('article3')">
+                <div class="card-image-wrapper">
+                    <div class="card-icon-illustration target-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-clock"></i> 6 min</span>
+                        <span>•</span>
+                        <span>Débutant</span>
+                    </div>
+                    <h2 class="card-title">Comment Trouver sa Niche en 2026</h2>
+                    <p class="card-excerpt">La méthode simple pour identifier un sujet rentable, aligné avec vos compétences et une vraie demande du marché.</p>
+                    <div class="btn-card-action">
+                        Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COMMUNITY SECTION -->
+        <div class="community-section" id="support">
+            <div class="section-header" style="margin-bottom: 36px;">
+                <div class="section-tag" style="background: rgba(56, 189, 248, 0.1); color: var(--accent-blue); border-color: rgba(56, 189, 248, 0.3);">
+                    <i class="fa-solid fa-users"></i> Vous n'êtes pas seul·e
+                </div>
+                <h2 class="section-title" style="font-size: 30px;">Support & Communauté</h2>
+                <p class="section-subtitle">Une question, un blocage, envie d'échanger avec d'autres membres ? Nous sommes disponibles.</p>
+            </div>
+
+            <div class="community-grid">
+                <!-- WHATSAPP -->
+                <div class="comm-card whatsapp">
+                    <div class="comm-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="comm-title">Groupe WhatsApp</div>
+                    <div class="comm-desc">Rejoignez la communauté, partagez vos avancées et échangez avec d'autres membres motivés.</div>
+                    <a href="https://whatsapp.com" target="_blank" class="btn-comm green">Rejoindre le groupe</a>
+                </div>
+
+                <!-- CONTACT DIRECT -->
+                <div class="comm-card">
+                    <div class="comm-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                    <div class="comm-title">Contact direct</div>
+                    <div class="comm-desc">Une question personnelle ? Écrivez-nous directement, nous répondons rapidement.</div>
+                    <a href="https://wa.me/" target="_blank" class="btn-comm green" style="background: #25D366; color: #fff;">Écrire sur WhatsApp</a>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="comm-card">
+                    <div class="comm-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="comm-title">Par e-mail</div>
+                    <div class="comm-desc">Vous préférez l'e-mail ? Contactez notre équipe pour toute question ou suggestion.</div>
+                    <a href="mailto:support@digitalascent.com" class="btn-comm outline">Envoyer un e-mail</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ARTICLE READER OVERLAY / MODAL -->
+    <div class="article-reader-modal" id="readerModal">
+        <div class="reader-progress-bar" id="progressBar"></div>
+        
+        <div class="reader-header">
+            <div class="reader-header-inner">
+                <button class="btn-back" onclick="closeArticle()">
+                    <i class="fa-solid fa-arrow-left"></i> Retour aux articles
+                </button>
+                <div style="font-size: 13px; font-weight: 600; color: var(--text-muted);">
+                    Digital Ascent Guide
+                </div>
+            </div>
+        </div>
+
+        <div class="reader-container">
+            <div class="reader-badge" id="readerBadge"></div>
+            <h1 class="reader-title" id="readerTitle"></h1>
+            
+            <div class="reader-meta-bar">
+                <div class="reader-author">
+                    <div class="author-avatar">DA</div>
+                    <div>
+                        <strong style="color: #fff; display: block;">Équipe Digital Ascent</strong>
+                        <span style="font-size: 12px; color: var(--text-muted);">Stratégie Business & Digital</span>
+                    </div>
+                </div>
+                <div>•</div>
+                <div id="readerReadTime"></div>
+            </div>
+
+            <!-- DYNAMIC CONTENT GOES HERE -->
+            <div class="article-content" id="readerBody"></div>
+
+            <!-- BOTTOM CTA -->
+            <div class="article-cta-box">
+                <h3>🚀 Prêt à passer à la vitesse supérieure ?</h3>
+                <p>Ne restez pas bloqué·e seul·e. Rejoignez notre communauté d'entrepreneurs et débloquez nos guides pas à pas.</p>
+                <a href="https://whatsapp.com" target="_blank" class="btn-cta-large">
+                    Rejoindre le Groupe WhatsApp <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR DYNAMIC INTERACTIVITY -->
+    <script>
+        // ARTICLE DATABASE
+        const articlesData = {
+            article1: {
+                badge: '<i class="fa-solid fa-rocket"></i> DÉBUTER SON BUSINESS',
+                title: 'Comment Créer son Business en Ligne quand on Débute ?',
+                readTime: 'Lecture 4 min',
+                content: `
+                    <p class="lead" style="font-size: 20px; color: #f8fafc; font-weight: 500;">
+                        Lancer son business sur Internet semble parfois insurmontable face à la quantité d'informations divergentes. Pourtant, 90% des débutants commettent la même erreur : vouloir tout faire parfaitement dès le premier jour.
+                    </p>
+                    
+                    <h2>1. Définir une offre simple et un problème unique</h2>
+                    <p>
+                        Avant de penser à votre logo, votre nom d'entreprise ou la couleur de votre site web, posez-vous une seule question : <strong>Quel problème urgent est-ce que je résous ?</strong>
+                    </p>
+                    <p>
+                        Votre offre initiale doit être d'une simplicité enfantine. Proposez une solution directe à une audience bien ciblée. Plus votre positionnement est clair, plus vous gagnez la confiance de vos premiers prospects.
+                    </p>
+
+                    <div class="callout-box">
+                        <p>💡 <strong>Conseil Digital Ascent :</strong> Il vaut mieux vendre une solution spécifique à 10 personnes passionnées qu'une proposition floue à 10 000 curieux.</p>
+                    </div>
+
+                    <h2>2. Construire un canal d'acquisition minimaliste</h2>
+                    <p>
+                        Ne cherchez pas à être présent simultanément sur Instagram, TikTok, LinkedIn, YouTube et un blog. Choisissez <strong>un seul canal d'acquisition</strong> où se trouve réellement votre cible, et maîtrisez-le avant de vous disperser.
+                    </p>
+
+                    <h2>3. Automatiser progressivement</h2>
+                    <p>
+                        Au départ, faites les choses à la main pour comprendre vos clients. Dès que vous identifiez des tâches répétitives (envoi d'emails, prise de rendez-vous, relances), mettez en place vos premiers automatismes gratuits.
+                    </p>
+                `
+            },
+            article2: {
+                badge: '<i class="fa-solid fa-gears"></i> AUTOMATISATION & PRODUCTIVITÉ',
+                title: 'Les 5 Meilleurs Outils Gratuits pour Automatiser son Business',
+                readTime: 'Lecture 5 min',
+                content: `
+                    <p class="lead" style="font-size: 20px; color: #f8fafc; font-weight: 500;">
+                        En tant qu'entrepreneur ou solopreneur, votre temps est votre ressource la plus précieuse. L'automatisation n'est plus réservée aux grandes entreprises : il existe aujourd'hui des outils 100% gratuits et d'une puissance redoutable.
+                    </p>
+
+                    <h2>Pourquoi automatiser dès le lancement ?</h2>
+                    <p>
+                        Chaque minute passée à recopier manuellement des données, répondre à des demandes génériques ou planifier des publications est une minute de moins consacrée à la création de valeur et à la vente.
+                    </p>
+
+                    <div class="tool-card-list">
+                        
+                        <div class="tool-item">
+                            <div class="tool-item-header">
+                                <div class="tool-number">1</div>
+                                <div class="tool-name">Make (ex-Integromat)</div>
+                            </div>
+                            <p style="margin:0; font-size:15px; color:#94a3b8;">
+                                Le roi incontesté de l'automatisation visuelle. Son plan gratuit permet de créer des scénarios complexes reliés à plus de 1000 applications (Notion, Gmail, Typeform, etc.).
+                            </p>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-item-header">
+                                <div class="tool-number">2</div>
+                                <div class="tool-name">Zapier</div>
+                            </div>
+                            <p style="margin:0; font-size:15px; color:#94a3b8;">
+                                L'outil d'automatisation le plus populaire au monde. Idéal pour débuter avec des zaps simples en 2 clics sans aucune connaissance en code.
+                            </p>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-item-header">
+                                <div class="tool-number">3</div>
+                                <div class="tool-name">Brevo (ex-Sendinblue)</div>
+                            </div>
+                            <p style="margin:0; font-size:15px; color:#94a3b8;">
+                                Pour votre Email Marketing. Permet d'envoyer jusqu'à 300 emails par jour gratuitement et de créer des séquences d'accueil automatisées.
+                            </p>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-item-header">
+                                <div class="tool-number">4</div>
+                                <div class="tool-name">Notion Automations</div>
+                            </div>
+                            <p style="margin:0; font-size:15px; color:#94a3b8;">
+                                Gérez vos projets, vos leads et votre contenu en déclenchant des actions automatiques à chaque changement de statut.
+                            </p>
+                        </div>
+
+                        <div class="tool-item">
+                            <div class="tool-item-header">
+                                <div class="tool-number">5</div>
+                                <div class="tool-name">Buffer Free Plan</div>
+                            </div>
+                            <p style="margin:0; font-size:15px; color:#94a3b8;">
+                                Planifiez vos publications à l'avance sur 3 réseaux sociaux simultanément pour maintenir une présence constante sans y passer vos journées.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <h2>Cas Pratique : Votre premier Workflow en 10 minutes</h2>
+                    <p>
+                        Connectez votre formulaire de contact à Notion via Make : chaque prospect qui remplit votre formulaire devient automatiquement une fiche de prospect dans votre CRM Notion, et reçoit immédiatement un e-mail de confirmation pré-rédigé.
+                    </p>
+                `
+            },
+            article3: {
+                badge: '<i class="fa-solid fa-bullseye"></i> POSITIONNEMENT & STRATÉGIE',
+                title: 'Comment Trouver sa Niche en 2026',
+                readTime: 'Lecture 6 min',
+                content: `
+                    <p class="lead" style="font-size: 20px; color: #f8fafc; font-weight: 500;">
+                        En 2026, les marchés généralistes sont saturés. Vouloir parler à "tout le monde", c'est prendre le risque de ne toucher personne. La clé d'un business rentable réside dans l'identification d'une micro-niche ciblée.
+                    </p>
+
+                    <h2>La Formule en 4 Étapes pour Valider sa Niche</h2>
+
+                    <h3>Étape 1 : L'intersection du Trépied</h3>
+                    <p>
+                        Votre niche idéale se trouve au croisement de 3 piliers essentiels :
+                    </p>
+                    <ul style="padding-left: 20px; margin-bottom: 20px;">
+                        <li><strong>Vos compétences / connaissances :</strong> Ce dans quoi vous avez de l'expérience.</li>
+                        <li><strong>Votre centre d'intérêt :</strong> Un sujet qui vous stimule suffisamment sur la durée.</li>
+                        <li><strong>Une demande solvable :</strong> Des clients prêts à payer pour résoudre un problème urgent.</li>
+                    </ul>
+
+                    <h3>Étape 2 : L'analyse des requêtes et intentions</h3>
+                    <p>
+                        Utilisez des plateformes comme Reddit, Google Trends ou les groupes d'entraide pour identifier les questions récurrentes. Si des personnes posent la même question de manière répétée, vous tenez une piste sérieuse.
+                    </p>
+
+                    <div class="callout-box">
+                        <p>🎯 <strong>Exemple de micro-niche :</strong> Au lieu de faire du "Coaching Sportif" (marché généraliste), spécialisez-vous dans "Le renforcement musculaire pour cadres pressés de plus de 40 ans".</p>
+                    </div>
+
+                    <h3>Étape 3 : Le test de douleur client</h3>
+                    <p>
+                        Plus le problème que vous résolvez est douloureux, plus la conversion est facile. Évaluez la douleur de votre cible sur une échelle de 1 à 10. Si le problème se situe au-dessus de 7, la valeur de votre offre est immédiate.
+                    </p>
+
+                    <h3>Étape 4 : Validation rapide sans produit</h3>
+                    <p>
+                        Ne passez pas 3 mois à créer un produit avant de vérifier si quelqu'un veut l'acheter. Lancez un sondage ou proposez une pré-vente. Si vous obtenez vos 3 premiers paiements ou engagements, votre niche est validée !
+                    </p>
+                `
+            }
+        };
+
+        // OPEN ARTICLE MODAL
+        function openArticle(articleKey) {
+            const article = articlesData[articleKey];
+            if (!article) return;
+
+            document.getElementById('readerBadge').innerHTML = article.badge;
+            document.getElementById('readerTitle').innerText = article.title;
+            document.getElementById('readerReadTime').innerText = article.readTime;
+            document.getElementById('readerBody').innerHTML = article.content;
+
+            const modal = document.getElementById('readerModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            modal.scrollTop = 0;
+        }
+
+        // CLOSE ARTICLE MODAL
+        function closeArticle() {
+            const modal = document.getElementById('readerModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // READING PROGRESS BAR
+        document.getElementById('readerModal').addEventListener('scroll', function() {
+            const modal = this;
+            const winScroll = modal.scrollTop;
+            const height = modal.scrollHeight - modal.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>h
 <!-- LANDING PAGE – LIBERTÉ FINANCIÈRE EN LIGNE... -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
