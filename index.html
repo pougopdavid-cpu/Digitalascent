@@ -1839,3 +1839,22 @@
   }
 </script>
 
+  <!-- Modal pour afficher les articles au clic -->
+  <div id="article-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.95); z-index:10000; overflow-y:auto; padding:20px;">
+    <div style="max-width:800px; margin:40px auto; background:#1e293b; padding:30px; border-radius:12px; color:#f8fafc; position:relative;">
+      <button onclick="closeArticle()" style="position:absolute; top:15px; right:20px; background:#10b981; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; font-weight:bold;">← Retour</button>
+      <div id="article-content" style="margin-top:20px; line-height:1.8;"></div>
+    </div>
+  </div>
+
+  <script>
+    function openArticle(title, content) {
+      document.getElementById('article-content').innerHTML = '<h2 style="color:#10b981; font-size:24px;">' + title + '</h2><br>' + content;
+      document.getElementById('article-modal').style.display = 'block';
+    }
+    function closeArticle() {
+      document.getElementById('article-modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
