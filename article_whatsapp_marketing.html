@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les secrets des campagnes WhatsApp Marketing | NEXUSBIZ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#7C3AED',
+                            violet: '#8B5CF6',
+                            blue: '#2563EB',
+                            cyan: '#06B6D4',
+                            green: '#10B981',
+                            dark: '#0F172A'
+                        }
+                    },
+                    boxShadow: {
+                        'glow-purple': '0 0 25px -5px rgba(124, 58, 237, 0.4)',
+                        'glow-green': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
+                        'glow-blue': '0 0 25px -5px rgba(37, 99, 235, 0.4)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);
+        }
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: radial-gradient(circle, rgba(124, 58, 237, 0.07) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col bg-grid-pattern relative overflow-x-hidden">
+
+    <!-- Glowing Background Orbs -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl -z-10 pointer-events-none animate-pulse"></div>
+    <div class="fixed bottom-1/3 right-10 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white font-bold text-xl shadow-glow-purple group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-slate-900">
+                    NEXUS<span class="gradient-text">BIZ</span>
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-slate-600 hover:text-brand-purple font-semibold transition-colors py-2">Accueil</a>
+                <a href="index.html#articles" class="text-brand-purple font-semibold transition-colors py-2 border-b-2 border-brand-purple">Articles & Guides</a>
+                <a href="index.html#contact" class="text-slate-600 hover:text-brand-purple font-semibold transition-colors py-2">Contact</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-full shadow-glow-green hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>WhatsApp Direct</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content Container -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 py-10 w-full">
+        
+        <!-- Back Button -->
+        <a href="index.html" class="inline-flex items-center gap-2 text-slate-600 hover:text-brand-purple font-bold text-sm mb-8 transition-colors bg-white px-4 py-2 rounded-xl shadow-sm border border-slate-200">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Retour au site principal</span>
+        </a>
+
+        <!-- Main Article Box -->
+        <article class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-xl space-y-8">
+            
+            <!-- Article Header -->
+            <div class="space-y-4 border-b border-slate-200/80 pb-8">
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="bg-brand-blue/10 text-brand-blue font-bold text-xs px-3 py-1 rounded-full border border-blue-200">Marketing & Vente Digitale</span>
+                    <span class="text-slate-400 text-xs"><i class="fa-regular fa-clock mr-1"></i> Temps de lecture : 6 minutes</span>
+                    <span class="text-slate-400 text-xs"><i class="fa-solid fa-signal mr-1"></i> Niveau : Débutant à Intermédiaire</span>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+                    Les secrets des campagnes WhatsApp Marketing à haute conversion
+                </h1>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="rounded-2xl overflow-hidden h-64 sm:h-80 relative shadow-md">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="WhatsApp Marketing" class="w-full h-full object-cover">
+            </div>
+
+            <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-6 text-base sm:text-lg">
+                
+                <p class="text-lg sm:text-xl font-medium text-slate-800 leading-relaxed bg-purple-50/60 p-5 rounded-2xl border-l-4 border-brand-purple">
+                    Dans le monde du business en ligne, la conversion dépend d'un facteur clé : <strong>la confiance</strong>. Alors que les e-mails traditionnels affichent des taux d'ouverture moyens oscillant entre 15% et 25%, <strong>WhatsApp enregistre un taux d'ouverture fulgurant de près de 98%</strong>, avec plus de 80% des messages lus dans les 5 premières minutes.
+                </p>
+
+                <p>
+                    Pour un entrepreneur digital, WhatsApp n'est pas seulement une application de messagerie instantanée, c'est l'outil de conversion le plus puissant du marché.
+                </p>
+
+                <!-- Section 1 -->
+                <h2 class="text-2xl font-bold text-slate-900 pt-4 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-purple-100 text-brand-purple text-sm flex items-center justify-center font-bold">1</span>
+                    Pourquoi WhatsApp est le roi incontesté de la conversion
+                </h2>
+                
+                <p>
+                    Contrairement aux réseaux sociaux classiques (Facebook, Instagram, TikTok) où vous êtes dépendant des algorithmes, WhatsApp offre un canal <strong>direct, privé et personnel</strong> avec votre prospect.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-2">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                        <span class="block text-2xl font-black text-brand-purple">~98%</span>
+                        <span class="text-xs text-slate-500 font-semibold uppercase">Taux d'ouverture</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                        <span class="block text-2xl font-black text-brand-blue">45% à 60%</span>
+                        <span class="text-xs text-slate-500 font-semibold uppercase">Taux de clic (CTR)</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                        <span class="block text-2xl font-black text-brand-green">3x à 5x</span>
+                        <span class="text-xs text-slate-500 font-semibold uppercase">Taux de conversion</span>
+                    </div>
+                </div>
+
+                <!-- Section 2 -->
+                <h2 class="text-2xl font-bold text-slate-900 pt-4 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-purple-100 text-brand-purple text-sm flex items-center justify-center font-bold">2</span>
+                    Configurer WhatsApp Business comme un pro
+                </h2>
+
+                <p>Avant de lancer la moindre campagne, votre profil doit inspirer une confiance absolue :</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Utilisez un compte WhatsApp Business :</strong> Indispensable pour accéder aux fonctionnalités (catalogue, étiquettes, messages automatiques).</li>
+                    <li><strong>Optimisez votre profil :</strong> Un logo net, une description claire en 2 phrases, vos horaires et le lien de votre site.</li>
+                    <li><strong>Mettez en place un Catalogue Produit :</strong> Présentez vos offres phare directement dans l'application avec visuels et prix.</li>
+                </ul>
+
+                <!-- Section 3 -->
+                <h2 class="text-2xl font-bold text-slate-900 pt-4 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-purple-100 text-brand-purple text-sm flex items-center justify-center font-bold">3</span>
+                    Les 3 canaux d'acquisition WhatsApp
+                </h2>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse bg-white rounded-xl overflow-hidden border border-slate-200">
+                        <thead class="bg-slate-100 text-slate-800 font-bold">
+                            <tr>
+                                <th class="p-3 border-b">Canal</th>
+                                <th class="p-3 border-b">Rôle principal</th>
+                                <th class="p-3 border-b">Fréquence</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-3 font-semibold text-brand-purple">Statuts WhatsApp</td>
+                                <td class="p-3">Éducation, preuve sociale, storytelling</td>
+                                <td class="p-3">3 à 6 par jour</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-brand-blue">Listes de Diffusion</td>
+                                <td class="p-3">Annonces, ventes flash, VIP</td>
+                                <td class="p-3">1 à 2 par semaine</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-brand-green">Groupes / Communautés</td>
+                                <td class="p-3">Créer une tribu, animer des défis</td>
+                                <td class="p-3">Interaction continue</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 4 -->
+                <h2 class="text-2xl font-bold text-slate-900 pt-4 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-purple-100 text-brand-purple text-sm flex items-center justify-center font-bold">4</span>
+                    La structure d'un message de vente (Méthode AIDA)
+                </h2>
+
+                <p>Suivez la structure AIDA : <strong>Attention</strong> (Accroche), <strong>Intérêt</strong> (Histoire/Problème), <strong>Désir</strong> (La solution), et <strong>Action</strong> (Appel à l'action clair).</p>
+
+                <div class="bg-slate-900 text-slate-100 p-6 rounded-2xl space-y-3 font-sans text-sm relative shadow-lg">
+                    <span class="text-xs text-brand-green font-bold uppercase tracking-wider block">Exemple de script de vente :</span>
+                    <p class="font-bold text-base text-white">🎯 Marre de publier sur Facebook sans obtenir de ventes ?</p>
+                    <p>La plupart des entrepreneurs commettent l'erreur de chercher des clients partout, sauf là où ils passent 80% de leur temps : sur WhatsApp.</p>
+                    <p>Dans notre nouveau guide, nous vous révélons la méthode exacte pour générer vos 10 premières commandes dès cette semaine.</p>
+                    <p class="text-emerald-400 font-semibold">🎁 Offre spéciale : Les 15 premières personnes qui répondent "GUIDE" bénéficient de -50% de réduction.</p>
+                    <p class="font-bold text-white">👉 Répondez "GUIDE" maintenant pour bloquer votre réduction !</p>
+                </div>
+
+                <!-- CTA Banner -->
+                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-xl mt-8">
+                    <h3 class="text-2xl font-bold">Vous souhaitez accélérer la mise en place de vos tunnels WhatsApp ?</h3>
+                    <p class="text-purple-100 text-sm max-w-xl mx-auto">Contactez directement l'équipe NEXUSBIZ pour bénéficier d'un accompagnement personnalisé sur mesure.</p>
+                    <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:scale-105">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Discuter avec NEXUSBIZ sur WhatsApp (+237 676619977)</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </article>
+    </main>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" title="WhatsApp" class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/40 hover:scale-110 hover:bg-emerald-600 transition-all duration-300">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="mailto:pougopdavid@gmail.com" title="Email" class="w-14 h-14 rounded-full bg-brand-purple text-white flex items-center justify-center text-2xl shadow-lg shadow-purple-500/40 hover:scale-110 hover:bg-purple-700 transition-all duration-300">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-xs text-slate-400">
+            <p>&copy; 2026 NEXUSBIZ. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
