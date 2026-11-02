@@ -3,441 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Business Lab | Stratégies & Succès en Ligne</title>
-    <!-- Tailwind CSS CDN -->
+    <title>NEXUSBIZ - Solutions Digitales & Marketing</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            purple: '#7C3AED',
-                            violet: '#8B5CF6',
-                            blue: '#2563EB',
-                            cyan: '#06B6D4',
-                            green: '#10B981',
-                            dark: '#0F172A'
-                        }
-                    },
-                    boxShadow: {
-                        'glow-purple': '0 0 25px -5px rgba(124, 58, 237, 0.5)',
-                        'glow-green': '0 0 25px -5px rgba(16, 185, 129, 0.5)',
-                        'glow-blue': '0 0 25px -5px rgba(37, 99, 235, 0.5)',
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* CSS personnalisé pour le Glassmorphism & Effets Futuristes */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 20px 30px -10px rgba(124, 58, 237, 0.15);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #10B981 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);
-        }
-        .bg-grid-pattern {
-            background-size: 30px 30px;
-            background-image: radial-gradient(circle, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
-        }
-    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col bg-grid-pattern relative overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 font-sans">
 
-    <!-- ARRIÈRE-PLAN LUMINEUX ET FUTURISTE (Glow Orbs) -->
-    <div class="fixed top-0 left-1/4 w-96 h-96 bg-purple-300/40 rounded-full blur-3xl -z-10 pointer-events-none animate-pulse"></div>
-    <div class="fixed bottom-1/3 right-10 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-    <div class="fixed top-2/3 left-10 w-80 h-80 bg-blue-200/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-
-    <!-- A. EN-TÊTE / NAVIGATION -->
-    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" onclick="showPage('home')" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center text-white font-bold text-xl shadow-glow-purple group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-                <span class="text-xl font-extrabold tracking-tight text-slate-900">
-                    NEXUS<span class="gradient-text">BIZ</span>
-                </span>
-            </a>
-
-            <!-- Navigation Desktop -->
-            <nav class="hidden md:flex items-center gap-8">
-                <button onclick="showPage('home')" id="nav-home" class="nav-link text-slate-700 hover:text-brand-purple font-semibold transition-colors py-2 border-b-2 border-brand-purple">Accueil</button>
-                <button onclick="showPage('articles')" id="nav-articles" class="nav-link text-slate-600 hover:text-brand-purple font-semibold transition-colors py-2 border-b-2 border-transparent">Articles & Guides</button>
-                <button onclick="showPage('contact')" id="nav-contact" class="nav-link text-slate-600 hover:text-brand-purple font-semibold transition-colors py-2 border-b-2 border-transparent">Contact</button>
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-black text-blue-600">NEXUSBIZ</h1>
+            <nav class="space-x-6">
+                <a href="index.html" class="font-medium text-slate-700 hover:text-blue-600">Accueil</a>
+                <a href="#articles" class="font-medium text-slate-700 hover:text-blue-600">Articles</a>
+                <a href="#contact" class="font-medium text-slate-700 hover:text-blue-600">Contact</a>
             </nav>
-
-            <!-- Bouton CTA Header -->
-            <div class="hidden sm:flex items-center gap-4">
-                <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-full shadow-glow-green hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>WhatsApp Direct</span>
-                </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brand-purple text-2xl focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/60 bg-white/95 backdrop-blur-lg px-4 pt-3 pb-6 space-y-3">
-            <button onclick="showPage('home')" class="block w-full text-left py-2 font-semibold text-slate-700 hover:text-brand-purple">Accueil</button>
-            <button onclick="showPage('articles')" class="block w-full text-left py-2 font-semibold text-slate-700 hover:text-brand-purple">Articles & Guides</button>
-            <button onclick="showPage('contact')" class="block w-full text-left py-2 font-semibold text-slate-700 hover:text-brand-purple">Contact</button>
-            <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-emerald-500 text-white font-bold py-3 rounded-xl shadow-md w-full mt-4">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>WhatsApp (+237 676619977)</span>
-            </a>
         </div>
     </header>
 
-    <!-- CONTENU PRINCIPAL -->
-    <main class="flex-grow">
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
         
-        <!-- PAGE 1 : ACCUEIL -->
-        <section id="page-home" class="page-content space-y-24 py-12">
-            
-            <!-- Hero Section -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 text-center relative">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100/80 border border-purple-200 text-brand-purple font-semibold text-xs sm:text-sm mb-6 shadow-sm">
-                    <span class="flex h-2 w-2 rounded-full bg-brand-green animate-ping"></span>
-                    <span>Accélérez vos revenus en ligne en 2026</span>
-                </div>
-                
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 max-w-4xl mx-auto leading-tight mb-8">
-                    Bâtissez un Empire Digital <br class="hidden sm:inline">
-                    <span class="gradient-text">Rentable & Scalable</span>
-                </h1>
-                
-                <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Découvrez les meilleures méthodes, stratégies testées et outils modernes pour générer des revenus passifs et propulser vos business en ligne.
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                    <a href="#newsletter-section" class="w-full sm:w-auto px-8 py-4 rounded-xl gradient-bg text-white font-bold shadow-glow-purple hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
-                        <span>Rejoindre le Club Privé</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <button onclick="showPage('articles')" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-slate-800 font-bold border border-slate-300 hover:bg-white hover:border-brand-purple hover:text-brand-purple transition-all duration-300 shadow-sm">
-                        Explorer les Articles
-                    </button>
-                </div>
-            </div>
-
-            <!-- Section Présentation / Stratégies (Cards Grid) -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-slate-900">Les 3 Piliers de la Réussite Digital</h2>
-                    <p class="text-slate-600 mt-2">Des méthodes concrètes applicables dès aujourd'hui.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Carte 1 -->
-                    <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
-                        <div class="w-14 h-14 rounded-2xl bg-purple-100 text-brand-purple flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-store"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">E-commerce & Boutiques</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            Lancement de boutiques en ligne à fort taux de conversion, stratégies de sourcing et automatisation des ventes.
-                        </p>
-                        <a href="#" onclick="showPage('articles')" class="text-brand-purple font-semibold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                            En savoir plus <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </a>
-                    </div>
-
-                    <!-- Carte 2 -->
-                    <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
-                        <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-brand-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-file-pdf"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">Produits Digitaux & E-books</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            Créez, emballez et vendez des e-books et formations à 100% de marge bénéficiaire partout dans le monde.
-                        </p>
-                        <a href="#" onclick="showPage('articles')" class="text-brand-green font-semibold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                            En savoir plus <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </a>
-                    </div>
-
-                    <!-- Carte 3 -->
-                    <div class="glass-card rounded-2xl p-8 relative overflow-hidden group">
-                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brand-blue flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">Acquisition & Marketing</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            Maîtrisez la publicité ciblée, la création de contenus viraux et les tunnels de conversion automatisés.
-                        </p>
-                        <a href="#" onclick="showPage('articles')" class="text-brand-blue font-semibold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                            En savoir plus <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section Formulaire d'inscription (Brevo / Sendinblue) -->
-            <div id="newsletter-section" class="max-w-4xl mx-auto px-4 sm:px-6">
-                <div class="glass-panel rounded-3xl p-6 sm:p-10 border-2 border-purple-200/80 shadow-2xl relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-green/20 rounded-full blur-2xl"></div>
-                    
-                    <div class="text-center max-w-xl mx-auto mb-8">
-                        <span class="text-brand-purple font-bold tracking-wider text-xs uppercase bg-purple-100 px-3 py-1 rounded-full">Newsletter VIP</span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">Recevez nos meilleures stratégies</h2>
-                        <p class="text-slate-600 text-sm mt-2">Inscrivez-vous gratuitement pour débloquer nos astuces confidentielles directement dans votre boîte mail.</p>
-                    </div>
-
-                    <!-- Conteneur Futuriste pour l'Iframe Brevo -->
-                    <div class="bg-white rounded-2xl p-2 sm:p-4 shadow-inner border border-slate-200 overflow-hidden min-h-[320px] flex items-center justify-center">
-                        <iframe width="540" height="305" src="https://73946c1f.sibforms.com/v2/serve/MUIFAPDzWJZLmy6V6HkupJNE0xkb2BB6vmem5dryDzAb4-VUIgD2LaMqSIuXhgUz0NGLMJTPsrjDqdWxNpN89R_PugFc1KMJkTg5R8BTheNQA5jrm0wXPjp9v8HHMmNwYlkcdPJMqFHM2zE2xUjROFnBi5Ko_V-icLCJ2wPtYicbOhtqIDXXOeHcaMhWPkk13NRze1YmW8sqE-l3dQ==" frameborder="0" scrolling="auto" allowfullscreen style="display: block; margin-left: auto; margin-right: auto; max-width: 100%;"></iframe>
-                    </div>
-
-                    <!-- Bouton de redirection dynamique post-inscription -->
-                    <div class="mt-8 text-center border-t border-slate-200/80 pt-6">
-                        <p class="text-slate-500 text-xs mb-3">Déjà inscrit ou pressé de lire nos stratégies ?</p>
-                        <button onclick="showPage('articles')" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-green hover:from-blue-700 hover:to-emerald-600 text-white font-bold px-6 py-3 rounded-xl shadow-glow-green hover:shadow-lg transition-all text-sm">
-                            <span>Accéder directement aux Articles</span>
-                            <i class="fa-solid fa-arrow-right-long"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Section Hero -->
+        <section class="text-center py-12">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Développez votre entreprise avec le digital</h2>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Découvrez nos guides, astuces et stratégies pour propulser votre business en ligne vers le sommet.</p>
         </section>
 
-        <!-- PAGE 2 : CATALOGUE DES ARTICLES -->
-        <section id="page-articles" class="page-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Centre de Connaissances</h1>
-                <p class="text-slate-600 mt-2">Explorez nos guides détaillés, tutoriels et analyses stratégiques pour développer vos activités.</p>
-            </div>
-
-            <!-- Grille d'Articles -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Section Articles -->
+        <section id="articles" class="py-8">
+            <h3 class="text-2xl font-bold text-slate-900 mb-8">Nos Derniers Articles & Guides</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Article 1 -->
-                <article class="glass-card rounded-2xl overflow-hidden flex flex-col">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556742049-0a67d57a4b21?auto=format&fit=crop&w=600&q=80" alt="Online Store" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-brand-purple text-white text-xs font-bold px-3 py-1 rounded-full shadow">E-commerce</span>
+                <article class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col border border-slate-100">
+                    <div class="h-48 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Article 1" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-slate-400 text-xs mb-2"><i class="fa-regular fa-clock mr-1"></i> Lecture 5 min</span>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2 hover:text-brand-purple transition-colors">Comment créer une boutique en ligne rentable au Cameroun</h3>
-                        <p class="text-slate-600 text-sm line-clamp-3 mb-6">Guide étape par étape pour identifier les produits gagnants, configurer les moyens de paiement locaux et générer vos premières ventes.</p>
-                        <button class="mt-auto inline-flex items-center justify-between text-brand-purple font-bold text-sm pt-4 border-t border-slate-100 hover:text-purple-800">
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Comment créer une stratégie digitale efficace</h4>
+                        <p class="text-slate-600 text-sm mb-6">Guide étape par étape pour identifier les canaux porteurs...</p>
+                        <a href="article1.html" class="mt-auto inline-flex items-center justify-between text-blue-600 font-bold text-sm pt-4 border-t border-slate-100 hover:text-blue-800">
                             <span>Lire la suite</span>
                             <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </article>
 
                 <!-- Article 2 -->
-                <article class="glass-card rounded-2xl overflow-hidden flex flex-col">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="E-books" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-brand-green text-white text-xs font-bold px-3 py-1 rounded-full shadow">Produits Digitaux</span>
+                <article class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col border border-slate-100">
+                    <div class="h-48 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173" alt="Article 2" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-slate-400 text-xs mb-2"><i class="fa-regular fa-clock mr-1"></i> Lecture 8 min</span>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2 hover:text-brand-green transition-colors">Vendre des E-books : De la création à la première vente</h3>
-                        <p class="text-slate-600 text-sm line-clamp-3 mb-6">Découvrez comment rédiger un e-book à forte valeur ajoutée et automatiser entièrement sa distribution pour encaisser en continu.</p>
-                        <button class="mt-auto inline-flex items-center justify-between text-brand-green font-bold text-sm pt-4 border-t border-slate-100 hover:text-emerald-700">
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Vendre des E-books à forte valeur ajoutée</h4>
+                        <p class="text-slate-600 text-sm mb-6">Découvrez comment rédiger et packager un produit numérique...</p>
+                        <a href="article2.html" class="mt-auto inline-flex items-center justify-between text-blue-600 font-bold text-sm pt-4 border-t border-slate-100 hover:text-blue-800">
                             <span>Lire la suite</span>
                             <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </article>
 
-                <!-- Article 3 -->
-                <article class="glass-card rounded-2xl overflow-hidden flex flex-col">
-                    <div class="h-48 bg-slate-200 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Marketing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-full shadow">Marketing</span>
+                <!-- Article 3 : WhatsApp Marketing -->
+                <article class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col border border-slate-100">
+                    <div class="h-48 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1611746872915-64382b5c76da" alt="WhatsApp Marketing" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-slate-400 text-xs mb-2"><i class="fa-regular fa-clock mr-1"></i> Lecture 6 min</span>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2 hover:text-brand-blue transition-colors">Les secrets des campagnes WhatsApp Marketing à haut conversion</h3>
-                        <p class="text-slate-600 text-sm line-clamp-3 mb-6">Utilisez la puissance de WhatsApp pour établir une relation de confiance avec vos prospects et décupler votre chiffre d'affaires.</p>
-                       <a href="article3.html" class="mt-auto inline-flex items-center justify-between text-brand-blue font-bold text-sm pt-4 border-t border-slate-100 hover:text-blue-800"><span>Lire la suite</span><i class="fa-solid fa-arrow-right"></i></a>
-                    </div> 
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Les secrets des campagnes WhatsApp Marketing</h4>
+                        <p class="text-slate-600 text-sm mb-6">Utilisez la puissance de WhatsApp pour établir une relation proche...</p>
+                        <a href="article3.html" class="mt-auto inline-flex items-center justify-between text-blue-600 font-bold text-sm pt-4 border-t border-slate-100 hover:text-blue-800">
+                            <span>Lire la suite</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- PAGE 3 : CONTACT DIRECT -->
-        <section id="page-contact" class="page-content hidden max-w-4xl mx-auto px-4 sm:px-6 py-12">
-            <div class="text-center mb-12">
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Entrons en Contact</h1>
-                <p class="text-slate-600 mt-2">Une question, un projet ou un besoin d'accompagnement ? Choisissez votre canal préféré.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Option WhatsApp -->
-                <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-8 text-center flex flex-col items-center hover:border-emerald-500 group">
-                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">WhatsApp Direct</h3>
-                    <p class="text-slate-500 text-sm mb-6">Discussion instantanée et réponses rapides pour toutes vos questions.</p>
-                    <span class="mt-auto w-full py-3 bg-emerald-500 text-white font-bold rounded-xl shadow-glow-green hover:bg-emerald-600 transition-colors">
-                        +237 676619977
-                    </span>
-                </a>
-
-                <!-- Option Email -->
-                <a href="mailto:pougopdavid@gmail.com" class="glass-card rounded-2xl p-8 text-center flex flex-col items-center hover:border-brand-purple group">
-                    <div class="w-16 h-16 rounded-full bg-purple-100 text-brand-purple flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-regular fa-envelope"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Email Professionnel</h3>
-                    <p class="text-slate-500 text-sm mb-6">Pour les demandes de partenariat et accompagnements personnalisés.</p>
-                    <span class="mt-auto w-full py-3 bg-brand-purple text-white font-bold rounded-xl shadow-glow-purple hover:bg-purple-700 transition-colors">
-                        pougopdavid@gmail.com
-                    </span>
-                </a>
-            </div>
+        <!-- Section Contact -->
+        <section id="contact" class="py-16 text-center">
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-4">Entrons en Contact</h3>
+            <p class="text-slate-600 mb-8">Une question, un projet ou un besoin d'accompagnement ?</p>
+            <a href="index.html" class="inline-block bg-blue-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-blue-700">Retour à l'accueil</a>
         </section>
 
     </main>
 
-    <!-- BOUTONS DE CONTACTS FLOTTANTS (Visibles sur CHAQUE page) -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        <!-- Bouton Flottant WhatsApp -->
-        <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" title="Contacter sur WhatsApp" class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/40 hover:scale-110 hover:bg-emerald-600 transition-all duration-300">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <!-- Bouton Flottant Email -->
-        <a href="mailto:pougopdavid@gmail.com" title="Envoyer un Email" class="w-14 h-14 rounded-full bg-brand-purple text-white flex items-center justify-center text-2xl shadow-lg shadow-purple-500/40 hover:scale-110 hover:bg-purple-700 transition-all duration-300">
-            <i class="fa-regular fa-envelope"></i>
-        </a>
-    </div>
-
-    <!-- PIED DE PAGE (Footer) -->
-    <footer class="bg-white border-t border-slate-200 mt-20 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Branding -->
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center text-white font-bold text-sm">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
-                        <span class="text-lg font-extrabold text-slate-900">NEXUS<span class="gradient-text">BIZ</span></span>
-                    </div>
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Votre plateforme de référence pour maîtriser le business en ligne et transformer vos idées en revenus pérennes.
-                    </p>
-                </div>
-
-                <!-- Liens Rapides -->
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Navigation</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><button onclick="showPage('home')" class="hover:text-brand-purple transition-colors">Accueil</button></li>
-                        <li><button onclick="showPage('articles')" class="hover:text-brand-purple transition-colors">Catalogue des Articles</button></li>
-                        <li><button onclick="showPage('contact')" class="hover:text-brand-purple transition-colors">Contact</button></li>
-                    </ul>
-                </div>
-
-                <!-- Contacts Directs -->
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Contact Direct</h4>
-                    <div class="space-y-3 text-sm">
-                        <a href="https://wa.me/237676619977" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-slate-600 hover:text-emerald-600 transition-colors">
-                            <i class="fa-brands fa-whatsapp text-emerald-500 text-lg"></i>
-                            <span>+237 676619977</span>
-                        </a>
-                        <a href="mailto:pougopdavid@gmail.com" class="flex items-center gap-3 text-slate-600 hover:text-brand-purple transition-colors">
-                            <i class="fa-regular fa-envelope text-brand-purple text-lg"></i>
-                            <span>pougopdavid@gmail.com</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
-                <p>&copy; 2026 NEXUSBIZ. Tous droits réservés. Développé avec passion pour votre succès.</p>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+        <p>&copy; 2026 NEXUSBIZ. Tous droits réservés.</p>
     </footer>
 
-    <!-- JAVASCRIPT DE NAVIGATION DYNAMIQUE ET INTERACTIONS -->
-    <script>
-        // Gestion de la Navigation Spa (Single Page Application)
-        function showPage(pageId) {
-            // Masquer toutes les pages
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.add('hidden'));
-
-            // Afficher la page demandée
-            const selectedPage = document.getElementById(`page-${pageId}`);
-            if (selectedPage) {
-                selectedPage.classList.remove('hidden');
-            }
-
-            // Mettre à jour l'état actif du menu
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('border-brand-purple', 'text-brand-purple');
-                link.classList.add('border-transparent', 'text-slate-600');
-            });
-
-            const activeNav = document.getElementById(`nav-${pageId}`);
-            if (activeNav) {
-                activeNav.classList.add('border-brand-purple', 'text-brand-purple');
-                activeNav.classList.remove('border-transparent', 'text-slate-600');
-            }
-
-            // Fermer le menu mobile si ouvert
-            document.getElementById('mobile-menu').classList.add('hidden');
-
-            // Remonter en haut de page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Gestion du Menu Mobile
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
 </body>
-    </html>
+</html>
